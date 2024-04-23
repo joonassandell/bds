@@ -164,7 +164,7 @@ If you need to unlink: run `npm unlink @biocode/ds` or `npm install` (assuming t
 2. In your project's client directory: Start the development server. Development server is assumed to have a watch mode, like Vite and Next.js does. This command is usually `npm run dev` but it depends on your project.
 3. Now, when you edit the previously added `<ComponentName>`, it rebuilds and changes should visible in your linked project
 
-You can also watch and rebuild multiple components at once e.g. `e.g. COMPONENT=Avatar,Badge,Button npm run dev`. Rebuilding single components is faster than rebuilding the entire library. Also, building the whole library may create weird error messages in clients.
+You can also watch and rebuild multiple components at once e.g. `COMPONENT=Avatar,Badge,Button npm run dev`. Rebuilding single components is faster than rebuilding the entire library. Also, building the whole library may create weird error messages in clients.
 
 ## Notes
 
