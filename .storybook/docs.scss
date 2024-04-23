@@ -1,0 +1,188 @@
+@use '../src/stylesheets/config' as *;
+@use '../src/stylesheets/mixins' as *;
+
+/* =======================================
+ * Docs Page Theme Overrides
+ * =======================================
+ *
+ * Style additional elements visible in "Docs" pages that cannot be styled in
+ * theme.ts, theme-light.ts or theme-dark.ts. Be careful not to override any
+ * base styles since they could pass to the component preview accidentally.
+ *
+ * 1. Main title
+ * 2. Main subtitle
+ * 3. Paragraphs (after main heading, in story docs etc.)
+ * 4. Story headings
+ * 5. Story "Stories" subtitle
+ * 6. Preview container (Preview = area where the component is in docs page)
+ * 7. Preview toolbar (has zoom/minus etc.)
+ * 8. Preview wrap toggle (wraps the toggle)
+ * 9. Preview "Show code" toggle
+ * 10. Args table container
+ * 11. Args table toolbar
+ * 12. Args table wrapper
+ * 13. <code> blocks in docs page (e.g. first description) and in args table
+ * 14. Code preview (opened with "Show code" toggle). Affects also 16. contents
+ * 15. Code preview's "Copy" button. Both 14., 9. & 16.
+ * 16. Code preview that could possibly be in the docs page itself
+ *     (e.g. after main title/subtitle/paragraphs)
+ * 17. Empty Args table
+ * 18. Empty content at least in Args Table
+ * 19. Args table tab
+ * 20. Args table tab active
+ */
+
+$title: '.sbdocs-title'; // [1.]
+$subtitle: '.sbdocs-subtitle'; // [2.]
+$paragraph: '.css-qa4clq :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p))'; // [3.]
+$heading: '.css-qa4clq :where(h3:not(.sb-anchor, .sb-unstyled, .sb-unstyled h3)):first-of-type, .css-qa4clq :where(h1:not(.sb-anchor, .sb-unstyled, .sb-unstyled h1)):first-of-type'; // [4.]
+$story-subtitle: '.css-qa4clq :where(h2:not(.sb-anchor, .sb-unstyled, .sb-unstyled h2))'; // [5.]
+$preview: '.sbdocs-preview'; // [6.]
+$preview-toolbar: '.css-l1e2yg'; // [7.]
+$preview-toggle-wrap: '.css-11xgcgt'; // [8.]
+$preview-toggle: '.docblock-code-toggle'; // [9.]
+$argsTable: '.docblock-argstable'; // [10.]
+$argsTable-toolbar: '.css-1i892q'; // [11.]
+$argsTable-wrap: '#panel-tab-content'; // [12.]
+$argsTable-empty: '.css-11ju8y0'; // [17.]
+$argsTable-tab: '.tabbutton'; // [19.]
+$argsTable-tab-active: '.tabbutton-active'; // [20.]
+$code: '.css-1kwwth4, .css-18pz2h2 code, .css-o1d7ko, .css-1hk8dr9'; // [13.]
+$code-preview: '.css-1xrl4hz'; // [14.]
+$code-copyButton: '.css-otxova, .css-1fdphfk'; // [15.]
+$code-docs: '.docblock-source'; // [16.]
+$empty: '.css-qa4clq :where(div:not(.sb-anchor, .sb-unstyled, .sb-unstyled div))'; // [18.]
+
+#{$title},
+#{$subtitle},
+#{$heading},
+#{$paragraph},
+#{$story-subtitle},
+#{$empty} {
+  font-family: var(--b-font-family) !important;
+}
+
+#{$title},
+#{$heading} {
+  color: var(--b-text-heading) !important;
+  font-weight: var(--b-font-weight-heading) !important;
+}
+
+#{$subtitle},
+#{$story-subtitle},
+#{$argsTable-tab} {
+  color: var(--b-text-50) !important;
+}
+
+#{$paragraph},
+#{$empty},
+#{$preview-toolbar},
+#{$argsTable-toolbar} {
+  color: var(--b-text) !important;
+}
+
+#{$paragraph},
+#{$empty} {
+  a {
+    color: var(--b-text-link) !important;
+
+    &:hover {
+      color: var(--b-text-link-hover) !important;
+    }
+  }
+}
+
+.sbdocs-wrapper,
+#{$preview},
+#{$preview-toolbar},
+#{$argsTable-toolbar},
+#{$argsTable-empty} {
+  background: var(--b-surface-0) !important;
+}
+
+#{$preview},
+#{$argsTable-empty} {
+  border-color: var(--b-border-mute-100) !important;
+}
+
+#{$preview-toolbar},
+#{$argsTable-toolbar} {
+  box-shadow: inset 0 -1px 0 0 var(--b-border-mute-100-translucent) !important;
+}
+
+#{$preview-toggle-wrap} {
+  background: transparent !important;
+}
+
+#{$argsTable-wrap} {
+  background: transparent !important;
+}
+
+#{$argsTable} {
+  th {
+    color: var(--b-text-50) !important;
+  }
+
+  tbody {
+    box-shadow: unset !important;
+    filter: unset !important;
+
+    td {
+      background: var(--b-surface-0) !important;
+      color: var(--b-text) !important;
+    }
+  }
+
+  td {
+    border-color: var(--b-surface-0-border) !important;
+  }
+}
+
+#{$argsTable-tab-active} {
+  border-bottom-color: var(--b-primary) !important;
+  color: var(--b-primary) !important;
+}
+
+#{$argsTable-empty} {
+  box-shadow: unset !important;
+}
+
+#{$code} {
+  background-color: var(--b-info-bg) !important;
+  border-color: var(--b-info-border) !important;
+  color: var(--b-info-fg) !important;
+}
+
+#{$code-docs} {
+  border-color: var(--b-border-100) !important;
+}
+
+#{$code-preview} {
+  background: var(--b-bg-static-900) !important;
+}
+
+#{$code-copyButton} {
+  background: var(--b-surface-3) !important;
+  color: var(--b-text-200) !important;
+}
+
+.rejt-name {
+  color: var(--b-primary-600) !important;
+}
+
+.rejt-value {
+  color: var(--b-text-50) !important;
+}
+
+/* =======================================
+ * Spacings etc.
+ * ======================================= */
+
+.sb-show-main.sb-main-padded {
+  padding: var(--b-space-m);
+}
+
+// Isolate root to make portals work like in the consuming apps
+#storybook-root {
+  isolation: isolate;
+}

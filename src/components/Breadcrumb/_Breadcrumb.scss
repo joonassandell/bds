@@ -1,0 +1,50 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Breadcrumb {
+  margin-left: calc(var(--b-space-xs) * -1);
+  margin-right: calc(var(--b-space-xs) * -1);
+  width: 100%;
+}
+
+.b-Breadcrumb-scrollArea {
+  .b-ScrollArea-viewport {
+    mask-image: linear-gradient(
+      to right,
+      rgba(#000, 0),
+      #000 var(--b-space-s),
+      #000 97.5%,
+      rgba(#000, 0)
+    );
+  }
+
+  .b-ScrollArea-scrollbar {
+    margin-bottom: calc(var(--b-space-s) * -1);
+    margin-left: var(--b-space-xs);
+    margin-right: var(--b-space-xs);
+  }
+}
+
+.b-Breadcrumb-main {
+  align-items: center;
+  display: flex;
+  margin-left: var(--b-space-xs);
+  margin-right: var(--b-space-xs);
+}
+
+.b-Breadcrumb-item {
+  @include textTruncate(20ch);
+  flex-shrink: 0;
+  position: relative;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.b-Breadcrumb-link {
+  @include text($style: textLinkUnderline);
+}
+
+.b-Breadcrumb-separator {
+  height: var(--b-Icon-size-xs);
+}

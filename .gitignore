@@ -1,0 +1,21 @@
+# OS based folders & files
+.DS_Store
+Thumbs.db
+
+# Next.js
+.next
+
+# Logs
+~/.npm/
+npm-debug.log*
+bun.lockb
+build-storybook.log
+
+# Npm, build
+node_modules/
+build/
+storybook-static/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/extensions.json

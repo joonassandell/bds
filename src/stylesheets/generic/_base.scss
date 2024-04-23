@@ -1,0 +1,167 @@
+@use 'sass:math';
+@use '../config' as *;
+@use '../mixins' as *;
+
+:root {
+  background-color: var(--b-surface-0);
+  font-family: var(--b-font-family);
+  font-feature-settings: var(--b-font-feature-settings);
+  font-size: var(--b-font-size);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: var(--b-font-weight);
+  line-height: var(--b-line-height);
+  min-width: var(--b-root-min-width);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: var(--b-root-user-select, none);
+}
+
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  overflow-y: scroll;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+blockquote,
+table,
+fieldset,
+figure,
+pre,
+ul,
+ol,
+dl,
+p {
+  margin: 0 0 var(--b-space);
+}
+
+nav ul {
+  @include resetList();
+}
+
+ul,
+ol,
+dl {
+  padding: 0 0 0 var(--b-space);
+}
+
+a {
+  color: var(--b-text-link);
+  text-decoration: none;
+
+  &:active {
+    color: var(--b-text-link);
+  }
+
+  &:hover {
+    color: var(--b-text-link-hover);
+  }
+}
+
+b,
+strong {
+  font-weight: var(--b-font-weight-strong);
+}
+
+hr {
+  border: 0;
+  border-top: var(--b-border-width-s) solid var(--b-surface-0-border);
+  display: block;
+  height: var(--b-border-width-s);
+  margin: var(--b-space-m) 0;
+  padding: 0;
+}
+
+small {
+  @include text(s);
+  color: var(--b-text-50);
+}
+
+:focus {
+  outline: 0;
+}
+
+:focus-visible {
+  outline: var(--b-border-width) solid var(--b-primary);
+  outline-offset: var(--b-border-width);
+
+  @include mqTouch {
+    outline: 0;
+  }
+}
+
+// See Readme notes
+:focus-visible:not(.focus-visible) {
+  outline: none;
+}
+
+::-moz-selection {
+  background: var(--b-primary);
+  color: var(--b-static-white);
+}
+
+::selection {
+  background: var(--b-primary);
+  color: var(--b-static-white);
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+img,
+embed,
+object,
+iframe,
+video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  vertical-align: middle;
+}
+
+// :where([type="button"]) for iOS
+button,
+:where([type='button']) {
+  @include resetButton();
+}
+
+input {
+  font-weight: var(--b-font-weight);
+}
+
+cite {
+  display: block;
+  font-style: unset;
+}
+
+input,
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  font-feature-settings: var(--b-font-feature-settings);
+  line-height: var(--b-line-height);
+
+  // Set font-size to 16 for iOS to not zoom when focusing inputs
+  @include iOS() {
+    font-size: 16px;
+  }
+}

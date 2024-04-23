@@ -1,0 +1,30 @@
+.b-Box {
+  background-clip: padding-box;
+  background-color: var(--b-Box-background-color, transparent);
+  color: var(--b-Box-color, var(--b-text));
+
+  &.-border {
+    border: var(--b-border-width) solid
+      var(--b-Box-border-color, var(--b-surface-0-border));
+  }
+
+  &.-border\:size\:s {
+    border-width: var(--b-border-width-s);
+  }
+
+  &.-border\:radius {
+    border-radius: var(--b-border-radius-l);
+  }
+
+  &.-border\:radius\:pill {
+    border-radius: var(--b-border-radius-pill);
+  }
+
+  &.-border\:radius\:full {
+    border-radius: var(--b-border-radius-full);
+  }
+
+  &.-shadow {
+    box-shadow: var(--b-shadow);
+  }
+}

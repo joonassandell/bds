@@ -1,0 +1,28 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-List {
+  @include resetList();
+  display: flex;
+  flex-direction: column;
+  gap: var(--b-space-xs);
+}
+
+.b-List-item {
+  align-items: center;
+  color: var(--b-text-200);
+  display: flex;
+  gap: var(--b-space-s);
+  justify-content: space-between;
+}
+
+.b-List-heading {
+  align-items: center;
+  display: flex;
+  gap: var(--b-space-xs);
+  min-width: 0;
+}
+
+.b-List-value {
+  font-feature-settings: var(--b-font-feature-settings-numeric);
+  font-variant-numeric: tabular-nums;
+}

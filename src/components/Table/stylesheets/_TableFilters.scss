@@ -1,0 +1,9 @@
+.b-TableFilters {
+  display: flex;
+  gap: var(--b-space);
+  margin-bottom: var(--b-space-m);
+}
+
+.b-TableFilters-filter {
+  flex: 1;
+}

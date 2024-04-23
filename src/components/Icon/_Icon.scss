@@ -1,0 +1,33 @@
+.b-Icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  height: var(--b-Icon-size);
+  width: var(--b-Icon-size);
+
+  svg {
+    display: inline-block;
+    fill: var(--b-Icon-color, currentColor);
+    height: 100%;
+    width: 100%;
+  }
+
+  &.-size\:l {
+    height: var(--b-Icon-size-l);
+    width: var(--b-Icon-size-l);
+  }
+
+  &.-size\:s {
+    height: var(--b-Icon-size-s);
+    width: var(--b-Icon-size-s);
+  }
+
+  &.-size\:xs {
+    height: var(--b-Icon-size-xs);
+    width: var(--b-Icon-size-xs);
+  }
+
+  &.-size\:xxs {
+    height: var(--b-Icon-size-xxs);
+    width: var(--b-Icon-size-xxs);
+  }
+}

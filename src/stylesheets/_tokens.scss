@@ -1,0 +1,214 @@
+@use 'config' as *;
+@use 'mixins' as *;
+
+:root {
+  // Static background
+  --b-bg-static-900-hsl: 224 100% 6%;
+  --b-bg-static-900: hsl(var(--b-bg-static-900-hsl));
+  --b-bg-static-800: hsl(224 100% 8%);
+  --b-bg-static-700: hsl(224 100% 10%);
+  --b-bg-static-600: hsl(224 100% 13%);
+  --b-bg-static-500: hsl(224 100% 19%);
+  --b-bg-static-400: hsl(224 100% 94%);
+  --b-bg-static-300: hsl(224 100% 96%);
+  --b-bg-static-200: hsl(224 100% 97%);
+  --b-bg-static-100: hsl(224 100% 99%);
+  --b-bg-static-50: hsl(224 100% 100%);
+
+  // Static text
+  --b-text-static-500: hsl(224 100% 13%);
+  --b-text-static-400: hsl(224 50% 30%);
+  --b-text-static-300: hsl(224 20% 47%);
+  --b-text-static-200: hsl(224 20% 65%);
+  --b-text-static-100: hsl(224 20% 75%);
+  --b-text-static-50: hsl(224 20% 90%);
+
+  // Static basic
+  --b-static-white-hsl: 0 0% 100%;
+  --b-static-white: hsl(var(--b-static-white-hsl));
+  --b-static-black-hsl: 0 0% 0%;
+  --b-static-black: hsl(var(--b-static-black-hsl));
+
+  // Static primary
+  --b-primary-static-300: hsl(224 100% 69%);
+  --b-primary-static-200: hsl(224 100% 79%);
+  --b-primary-static-100: hsl(224 100% 85%);
+  --b-primary-static-50: hsl(224 100% 97%);
+
+  // Accent 1
+  --b-accent-1: var(--b-accent-1-500);
+  --b-accent-1-900-hsl: 357 72% 13%;
+  --b-accent-1-900: hsl(var(--b-accent-1-900-hsl)); // Brand book dark
+  --b-accent-1-800: hsl(357 100% 20%);
+  --b-accent-1-700: hsl(357 100% 24%);
+  --b-accent-1-600: hsl(11 100% 40%);
+  --b-accent-1-500: hsl(11 96% 52%); // Brand book
+  --b-accent-1-400: hsl(13 100% 62%);
+  --b-accent-1-300: hsl(13 100% 70%);
+  --b-accent-1-200: hsl(13 100% 81%);
+  --b-accent-1-100: hsl(13 100% 91%); // Brand book light
+  --b-accent-1-50: hsl(13 100% 95%);
+
+  // Accent 2
+  --b-accent-2: var(--b-accent-2-500);
+  --b-accent-2-900: hsl(224 100% 13%); // Brand book dark
+  --b-accent-2-800: hsl(210 90% 23%);
+  --b-accent-2-700: hsl(205 74% 35%);
+  --b-accent-2-600: hsl(200 65% 52%);
+  --b-accent-2-500: hsl(200 74% 55%); // Brand book
+  --b-accent-2-400: hsl(198 76% 56%);
+  --b-accent-2-300: hsl(196 76% 64%);
+  --b-accent-2-200: hsl(196 78% 74%);
+  --b-accent-2-100: hsl(195 100% 85%); // Brand book light
+  --b-accent-2-50: hsl(192 100% 93%);
+
+  // Accent 3
+  --b-accent-3: var(--b-accent-3-500);
+  --b-accent-3-900: hsl(170 91% 9%); // Brand book dark
+  --b-accent-3-800: hsl(160 100% 13%);
+  --b-accent-3-700: hsl(150 100% 17%);
+  --b-accent-3-600: hsl(130 100% 34%);
+  --b-accent-3-500: hsl(119 70% 56%); // Brand book
+  --b-accent-3-400: hsl(119 80% 64%);
+  --b-accent-3-300: hsl(119 80% 74%);
+  --b-accent-3-200: hsl(107 100% 80%);
+  --b-accent-3-100: hsl(97 100% 87%); // Brand book light
+  --b-accent-3-50: hsl(97 100% 93%);
+
+  // Accent 4
+  --b-accent-4: var(--b-accent-4-500);
+  --b-accent-4-900-hsl: 43 55% 22%;
+  --b-accent-4-900: hsl(var(--b-accent-4-900-hsl));
+  --b-accent-4-800: hsl(40 75% 30%);
+  --b-accent-4-700-hsl: 40 100% 46%;
+  --b-accent-4-700: hsl(var(--b-accent-4-700-hsl)); // Brand book dark
+  --b-accent-4-600: hsl(46 100% 46%);
+  --b-accent-4-500: hsl(46 100% 55%); // Brand book
+  --b-accent-4-400: hsl(46 95% 63%);
+  --b-accent-4-300: hsl(50 85% 68%);
+  --b-accent-4-200: hsl(50 85% 74%);
+  --b-accent-4-100: hsl(50 100% 82%); // Brand book light
+  --b-accent-4-50: hsl(50 100% 91%);
+
+  // Accent 5
+  --b-accent-5: var(--b-accent-5-500);
+  --b-accent-5-900: hsl(246 50% 28%);
+  --b-accent-5-800: hsl(246 50% 35%);
+  --b-accent-5-700: hsl(246 50% 45%);
+  --b-accent-5-600: hsl(246 60% 55%);
+  --b-accent-5-500: hsl(246 90% 70%);
+  --b-accent-5-400: hsl(246 100% 75%);
+  --b-accent-5-300: hsl(246 100% 80%);
+  --b-accent-5-200: hsl(246 100% 85%);
+  --b-accent-5-100: hsl(246 100% 92%);
+  --b-accent-5-50: hsl(246 100% 96%);
+
+  // Base
+  --b-root-min-width: 320px;
+
+  // Typography
+  --b-font-family-sans: 'Space Grotesk', system-ui, sans-serif;
+  --b-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --b-font-family: var(--b-font-family-sans);
+  --b-font-feature-settings: 'zero' on, 'case' on, 'ss04' on;
+  --b-font-feature-settings-numeric: 'zero' on, 'ss04' on;
+
+  --b-font-weight-700: 700;
+  --b-font-weight-500: 500;
+  --b-font-weight-400: 400;
+  --b-font-weight-100: 100;
+  --b-font-weight: var(--b-font-weight-400);
+  --b-font-weight-heading: var(--b-font-weight-400);
+
+  // Font size, Line height
+  --b-font-size-8xl: 56px;
+  --b-line-height-8xl: 1; // 96/56
+
+  --b-font-size-7xl: 48px;
+  --b-line-height-7xl: 1; // 72/56
+
+  --b-font-size-6xl: 44px;
+  --b-line-height-6xl: 1; // 64/44
+
+  --b-font-size-5xl: 40px;
+  --b-line-height-5xl: 1.05; // 42/40
+
+  --b-font-size-4xl: 32px;
+  --b-line-height-4xl: 1.25; // 40/32
+
+  --b-font-size-3xl: 28px;
+  --b-line-height-3xl: 1.14; // ~32/28
+
+  --b-font-size-2xl: 24px;
+  --b-line-height-2xl: 1.16; // 28/24
+
+  --b-font-size-xl: 20px;
+  --b-line-height-xl: 1.3; // 26/20
+
+  --b-font-size-l: 17px;
+  --b-line-height-l: 1.4; // ~24/17
+
+  --b-font-size: 15px;
+  --b-line-height: 1.47; // ~22/15
+
+  --b-font-size-s: 14px;
+  --b-line-height-s: 1.43; // ~20/14
+
+  --b-font-size-xs: 12px;
+  --b-line-height-xs: 1.5; // 18/12
+
+  --b-font-size-2xs: 10px;
+  --b-line-height-2xs: 1.6; // 16/10
+
+  --b-font-size-3xs: 7px;
+  --b-line-height-3xs: 2.3; // ~16/7
+
+  // Spacing
+  --b-space-6xl: 80px;
+  --b-space-5xl: 72px;
+  --b-space-4xl: 64px;
+  --b-space-3xl: 56px;
+  --b-space-2xl: 48px;
+  --b-space-xl: 40px;
+  --b-space-l: 32px;
+  --b-space-ml: 28px;
+  --b-space-m: 24px;
+  --b-space-ms: 20px;
+  --b-space: 16px;
+  --b-space-s: 12px;
+  --b-space-xs: 8px;
+  --b-space-2xs: 4px;
+  --b-space-3xs: 2px;
+  --b-space-4xs: 1px;
+  --b-space-edge: 6.25%;
+
+  // Scrollbar
+  --b-scrollbar-width: thin;
+
+  // Border
+  --b-border-radius: 3px;
+  --b-border-radius-l: 5px;
+  --b-border-radius-pill: 60px;
+  --b-border-radius-full: 999px;
+  --b-border-width: 2px;
+  --b-border-width-s: 1px;
+
+  // Transition
+  --b-ease: cubic-bezier(0.76, 0, 0.18, 1);
+  --b-ease-in-out: ease-in-out;
+  --b-trans-duration: 0.15s;
+  --b-trans-duration-s: 0.1s;
+  --b-trans-duration-m: 0.3s;
+  --b-trans-duration-l: 0.5s;
+  --b-trans-duration-xl: 1s;
+  --b-trans-duration-2xl: 1.5s;
+
+  // Z-index (Currently not in use anywhere)
+  --b-z-index-1000: 1000; // Fullscreen loaders etc.
+  --b-z-index-900: 900; // Tooltips
+  --b-z-index-800: 800; // Toasts, Popover portals
+  --b-z-index-700: 700; // Dialogs, Portals
+  --b-z-index-600: 600; // Overlays
+  --b-z-index-500: 500; // Popovers
+}

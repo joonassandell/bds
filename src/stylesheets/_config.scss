@@ -1,0 +1,47 @@
+// =========
+// Breakpoints
+// =========
+
+$breakpoints: (
+  xxxs: 320px,
+  xxs: 360px,
+  xs: 480px,
+  s: 600px,
+  m: 768px,
+  ml: 900px,
+  l: 1024px,
+  xl: 1140px,
+  xxl: 1272px,
+  xxxl: 1440px,
+  xxxxl: 1512px,
+  xxxxxl: 1800px,
+  xxxxxxl: 2560px,
+) !default;
+
+$helper-breakpoints: (
+  s: map-get($breakpoints, s),
+  m: map-get($breakpoints, m),
+  ml: map-get($breakpoints, ml),
+  l: map-get($breakpoints, l),
+  xl: map-get($breakpoints, xl),
+  xxl: map-get($breakpoints, xxl),
+);
+
+// =========
+// Theme mode
+// =========
+//
+// 'class' = Uses classes only, added by ThemeProvider or some other method
+// 'system' = Uses system media query setting only
+// 'dark' = Forced dark theme
+// 'light' = Default light theme
+
+$theme-mode: 'class' !default;
+
+// =========
+// Utility
+// =========
+
+$util-fontSize-em: 16px !default;
+$util-fontSize-rem: 16px !default;
+$util-lineHeight: 24px !default;

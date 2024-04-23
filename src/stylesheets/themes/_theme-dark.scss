@@ -1,0 +1,214 @@
+@use '../config' as *;
+@use '../mixins' as *;
+
+@include theme('dark', $root: true) {
+  // Background
+  --b-bg-900: var(--b-bg-mute-900);
+  --b-bg-800: var(--b-bg-mute-800);
+  --b-bg-700: var(--b-bg-mute-700);
+  --b-bg-600: var(--b-bg-mute-600);
+  --b-bg-500: var(--b-bg-mute-500);
+  --b-bg-400: var(--b-bg-mute-400);
+  --b-bg-300: var(--b-bg-static-600);
+  --b-bg-200: var(--b-bg-static-700);
+  --b-bg-100: var(--b-bg-static-800);
+  --b-bg-50: var(--b-bg-static-900);
+
+  --b-bg-transparent: hsl(var(--b-bg-static-900-hsl) / 0);
+
+  // Background mute
+  --b-bg-mute-900: hsl(230 40% 35%);
+  --b-bg-mute-800: hsl(230 45% 32%);
+  --b-bg-mute-700: hsl(230 50% 27%);
+  --b-bg-mute-600: hsl(230 58% 24%);
+  --b-bg-mute-500: hsl(230 65% 21%);
+  --b-bg-mute-400: hsl(230 75% 17%);
+  --b-bg-mute-300: hsl(230 75% 13%);
+  --b-bg-mute-200: hsl(230 75% 10%);
+  --b-bg-mute-100: hsl(230 75% 8%);
+  --b-bg-mute-50: hsl(230 75% 6%);
+
+  // Border
+  --b-border-900: var(--b-border-mute-900);
+  --b-border-800: var(--b-border-mute-800);
+  --b-border-700: var(--b-border-mute-700);
+  --b-border-600: var(--b-border-mute-600);
+  --b-border-500: var(--b-border-mute-500);
+  --b-border-400: var(--b-border-mute-400);
+  --b-border-300: var(--b-border-mute-300);
+  --b-border-200: var(--b-border-mute-200);
+  --b-border-100: var(--b-border-mute-100);
+  --b-border-50: var(--b-border-mute-50);
+
+  --b-border-200-translucent: var(--b-border-mute-200-translucent);
+  --b-border-100-translucent: var(--b-border-mute-100-translucent);
+
+  // Border mute
+  --b-border-mute-900: hsl(230 40% 50%);
+  --b-border-mute-800: hsl(230 40% 45%);
+  --b-border-mute-700: hsl(230 40% 40%);
+  --b-border-mute-600: hsl(230 40% 36%);
+  --b-border-mute-500: hsl(230 60% 30%);
+  --b-border-mute-400: hsl(230 60% 24%);
+  --b-border-mute-300: hsl(230 60% 22%);
+  --b-border-mute-200: hsl(230 60% 20%);
+  --b-border-mute-100: hsl(230 60% 18%);
+  --b-border-mute-50: hsl(230 60% 14%);
+
+  --b-border-mute-translucent-hsl: 230 30% 40%;
+  --b-border-mute-200-translucent: hsl(
+    var(--b-border-mute-translucent-hsl) / 0.35
+  );
+  --b-border-mute-100-translucent: hsl(
+    var(--b-border-mute-translucent-hsl) / 0.25
+  );
+  --b-border-mute-strong: var(--b-border-mute-300);
+
+  // Text
+  --b-text-200: var(--b-text-static-50);
+  --b-text-100: var(--b-text-static-100);
+  --b-text-50: var(--b-text-static-200);
+  --b-text: var(--b-text-100);
+
+  --b-text-heading: var(--b-text-200);
+  --b-text-link: var(--b-primary-highlight);
+  --b-text-link-hover: var(--b-primary);
+
+  // Black
+  --b-black: var(--b-static-white);
+
+  // Primary (Other tokens inherited)
+  --b-primary-300: var(--b-primary-600);
+  --b-primary-200: var(--b-primary-700);
+  --b-primary-100: var(--b-primary-800);
+  --b-primary-50: var(--b-primary-900);
+
+  --b-primary-highlight: hsl(220 100% 60%);
+  --b-primary-light: var(--b-primary-50);
+  --b-primary-fg-light: var(--b-primary-static-50);
+
+  // Neutral
+  --b-neutral-bg: var(--b-bg-mute-400);
+  --b-neutral-fg: var(--b-text-200);
+  --b-neutral-border: var(--b-border-mute-300);
+  --b-neutral-mute: var(--b-bg-mute-800);
+  --b-neutral-mute-light: var(--b-bg-mute-600);
+
+  // Info (Other tokens inherited)
+  --b-info-bg: var(--b-primary-light);
+  --b-info-fg: var(--b-primary-fg-light);
+  --b-info-border: var(--b-primary-100);
+
+  // Success (Other tokens inherited)
+  --b-success-bg: var(--b-accent-3-900);
+  --b-success-fg: var(--b-accent-3);
+  --b-success-border: var(--b-accent-3-800);
+
+  // Warning (Other tokens inherited)
+  --b-warning-bg: var(--b-accent-4-900);
+  --b-warning-fg: var(--b-accent-4);
+  --b-warning-border: var(--b-accent-4-800);
+
+  // Error (Other tokens inherited)
+  --b-error-bg: var(--b-accent-1-900);
+  --b-error-fg: var(--b-accent-1-400);
+  --b-error-border: var(--b-accent-1-800);
+
+  // Highlight
+  --b-highlight: var(--b-accent-5-300);
+  --b-highlight-bg: var(--b-accent-5-900);
+  --b-highlight-fg: var(--b-accent-5-100);
+  --b-highlight-border: var(--b-accent-5-700);
+
+  // Surface 3
+  --b-surface-3: var(--b-bg-mute-400);
+  --b-surface-3-hover: var(--b-bg-mute-500);
+  --b-surface-3-active: var(--b-bg-mute-600);
+  --b-surface-3-focus: var(--b-bg-200);
+  --b-surface-3-pop: var(--b-bg-mute-500);
+  --b-surface-3-disabled: var(--b-bg-300);
+
+  --b-surface-3-border: var(--b-border-mute-400);
+  --b-surface-3-border-hover: var(--b-border-mute-500);
+  --b-surface-3-border-active: var(--b-border-mute-600);
+  --b-surface-3-border-focus: var(--b-primary);
+  --b-surface-3-border-disabled: var(--b-border-mute-300);
+
+  // Surface 2
+  --b-surface-2: var(--b-bg-300);
+  --b-surface-2-pop: var(--b-bg-mute-400);
+  --b-surface-2-border: var(--b-border-mute-300);
+
+  // Surface 1
+  --b-surface-1: var(--b-bg-300);
+  --b-surface-1-hover: var(--b-bg-mute-400);
+  --b-surface-1-active: var(--b-bg-mute-500);
+  --b-surface-1-focus: var(--b-bg-200);
+  --b-surface-1-pop: var(--b-bg-mute-400);
+  --b-surface-1-inactive: var(--b-bg-mute-600);
+  --b-surface-1-disabled: var(--b-bg-mute-300);
+
+  --b-surface-1-border: var(--b-border-mute-300);
+  --b-surface-1-border-hover: var(--b-border-mute-400);
+  --b-surface-1-border-active: var(--b-border-mute-500);
+  --b-surface-1-border-focus: var(--b-primary);
+  --b-surface-1-border-disabled: var(--b-border-mute-100);
+
+  // Surface 0
+  --b-surface-0: var(--b-bg-200);
+  --b-surface-0-hover: var(--b-bg-300);
+  --b-surface-0-active: var(--b-bg-mute-400);
+  --b-surface-0-focus: var(--b-bg-200);
+  --b-surface-0-pop: var(--b-bg-mute-300);
+  --b-surface-0-inactive: var(--b-bg-mute-500);
+  --b-surface-0-disabled: var(--b-bg-mute-300);
+  --b-surface-0-glare: var(--b-bg-mute-700);
+
+  --b-surface-0-border: var(--b-border-mute-100);
+  --b-surface-0-border-hover: var(--b-border-mute-300);
+  --b-surface-0-border-active: var(--b-border-mute-400);
+  --b-surface-0-border-focus: var(--b-primary);
+  --b-surface-0-border-disabled: var(--b-border-mute-100);
+
+  // Surface general
+  --b-surface-opacity-disabled: 0.8;
+
+  // Opacity
+  --b-opacity-subtle: 0.8;
+  --b-opacity-disabled: 0.6;
+
+  // Overlay
+  --b-overlay: hsl(var(--b-bg-static-900-hsl) / 0.7);
+
+  // Figure overlay
+  --b-figure-overlay: hsl(var(--b-bg-static-900-hsl) / 0.3);
+  --b-figure-overlay-shade: hsl(var(--b-accent-4-700-hsl) / 0.05);
+  --b-figure-overlay-border: hsl(var(--b-static-white-hsl) / 0.1);
+  --b-figure-overlay-border-strong: var(--b-figure-overlay-border);
+
+  // Shadow
+  --b-shadow-hsl: var(--b-bg-static-900-hsl);
+  --b-shadow-hsl-edge: var(--b-border-mute-translucent-hsl);
+  --b-shadow: inset 0 0 0 1px hsl(var(--b-shadow-hsl-edge) / 0.35),
+    0 3px 4px hsl(var(--b-shadow-hsl) / 0.2);
+  --b-shadow-l: 0 0 0 1px hsl(var(--b-shadow-hsl-edge) / 0.35),
+    0 5px 9px hsl(var(--b-shadow-hsl) / 0.2);
+  --b-shadow-invisible: inset 0 0 0 1px hsl(var(--b-shadow-hsl-edge) / 0),
+    0 3px 4px hsl(var(--b-shadow-hsl) / 0);
+  --b-shadow-left: -1px 0 0 hsl(var(--b-shadow-hsl-edge) / 0.35),
+    -3px 0 9px hsl(var(--b-shadow-hsl) / 0.2);
+  --b-shadow-right: 1px 0 0 hsl(var(--b-shadow-hsl-edge) / 0.35),
+    3px 0 9px hsl(var(--b-shadow-hsl) / 0.2);
+
+  // Scrollbar
+  --b-scrollbar-thumb: hsl(var(--b-static-white-hsl) / 0.15);
+  --b-scrollbar-thumb-hover: hsl(var(--b-static-white-hsl) / 0.3);
+
+  // Typography
+  --b-font-weight-strong: var(--b-font-weight-700);
+  --b-font-weight-medium: var(--b-font-weight-500);
+
+  // Base (Other tokens inherited)
+  color: var(--b-text);
+  color-scheme: dark;
+}

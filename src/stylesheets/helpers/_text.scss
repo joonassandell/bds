@@ -1,0 +1,14 @@
+@use '../config' as *;
+@use '../mixins/text' as *;
+
+.b-textBalance {
+  text-wrap: balance;
+}
+
+.b-textTruncate {
+  @include textTruncate($important: true);
+}
+
+.b-textTruncateClamp {
+  @include textTruncateClamp($important: true);
+}

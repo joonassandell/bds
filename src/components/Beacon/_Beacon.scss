@@ -1,0 +1,54 @@
+.b-Beacon-inner {
+  background-color: var(--b-primary);
+  border-radius: var(--b-border-radius-pill);
+  height: var(--b-Beacon-size);
+  position: relative;
+  width: var(--b-Beacon-size);
+}
+
+.b-Beacon-pulse {
+  background-color: inherit;
+  border-radius: var(--b-border-radius-pill);
+  inset: 0;
+  position: absolute;
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Beacon--info {
+  .b-Beacon-inner {
+    background-color: var(--b-info);
+  }
+}
+
+.b-Beacon--success {
+  .b-Beacon-inner {
+    background-color: var(--b-success);
+  }
+}
+
+.b-Beacon--warning {
+  .b-Beacon-inner {
+    background-color: var(--b-warning);
+  }
+}
+
+.b-Beacon--error {
+  .b-Beacon-inner {
+    background-color: var(--b-error);
+  }
+}
+
+.b-Beacon--highlight {
+  .b-Beacon-inner {
+    background-color: var(--b-highlight);
+  }
+}
+
+.b-Beacon--primaryForeground {
+  .b-Beacon-inner {
+    background-color: var(--b-primary-fg);
+  }
+}

@@ -1,0 +1,120 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Tabs-list--default {
+  .b-ScrollArea-viewport {
+    mask-image: linear-gradient(
+        to right,
+        hsl(var(--b-static-black-hsl) / 0),
+        var(--b-static-black) var(--b-space),
+        var(--b-static-black) calc(100% - var(--b-space-s)),
+        hsl(var(--b-static-black-hsl) / 0)
+      ),
+      linear-gradient(
+        to top,
+        var(--b-static-black) var(--b-border-width-s),
+        hsl(var(--b-static-black-hsl) / 0) var(--b-border-width-s)
+      );
+  }
+
+  .b-Tabs-list-inner {
+    padding: 0 var(--b-space);
+  }
+
+  .b-Tabs-list-tab {
+    height: var(--b-space-2xl);
+
+    // Some magic to make the last child borders lighter
+    &:last-child.is-disabled,
+    &:nth-last-child(2).is-disabled,
+    &:nth-last-child(2).is-disabled ~ .b-Tabs-list-tab.is-disabled {
+      --b-Tabs-list-tab-bg: var(--b-surface-0-disabled);
+      opacity: var(--b-surface-opacity-disabled);
+
+      .b-Tabs-list-tab-trigger,
+      .b-Tabs-list-tab-left,
+      .b-Tabs-list-tab-right {
+        border-top-color: var(--b-surface-0-border-disabled);
+      }
+
+      .b-Tabs-list-tab-left {
+        border-left-color: var(--b-surface-0-border-disabled);
+      }
+
+      .b-Tabs-list-tab-right {
+        border-right-color: var(--b-surface-0-border-disabled);
+      }
+    }
+
+    &.is-disabled {
+      .b-Tabs-list-tab-trigger {
+        color: var(--b-text-50);
+      }
+    }
+
+    // Fix Safari so that the border below (:after) stays hidden under tabs
+    @include safari() {
+      height: calc(var(--b-space-2xl) - 0.5px);
+    }
+  }
+
+  .b-Tabs-list-tab-trigger {
+    @include text($size: 'm', $style: 'textLink');
+    align-items: center;
+    background-color: var(--b-Tabs-list-tab-bg);
+    border-bottom: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+    border-top: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+    display: flex;
+    position: relative;
+    z-index: 3;
+
+    &[data-state='active'] {
+      border-bottom-color: transparent;
+      color: var(--b-text-200);
+      font-weight: var(--b-font-weight-500);
+
+      ~ .b-Tabs-list-tab-left {
+        border-bottom-color: transparent;
+        z-index: 2;
+      }
+
+      ~ .b-Tabs-list-tab-right {
+        &:before {
+          border-bottom-color: var(--b-Tabs-list-tab-bg);
+        }
+      }
+    }
+  }
+
+  .b-Tabs-list-tab-left,
+  .b-Tabs-list-tab-right {
+    background: var(--b-Tabs-list-tab-bg);
+    border-top: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+    position: relative;
+  }
+
+  .b-Tabs-list-tab-left {
+    border-bottom: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+    border-left: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+    border-radius: var(--b-border-radius-l) 0 0 0;
+    order: -1;
+    width: calc(var(--b-space-m) - 2px);
+    z-index: 0;
+  }
+
+  .b-Tabs-list-tab-right {
+    border-radius: 0 calc(var(--b-border-radius-l) + 2px) 0 0;
+    border-right: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+    display: flex;
+    margin-left: calc(calc(var(--b-space-s) * -1) - 1px);
+    transform: skew(30deg);
+    width: var(--b-space-xl);
+    z-index: 1;
+
+    &:before {
+      border-bottom: var(--b-border-width-s) solid var(--b-Tabs-list-tab-border);
+      content: '';
+      inset: auto 0 0 calc(var(--b-space) * -1);
+      position: absolute;
+    }
+  }
+}

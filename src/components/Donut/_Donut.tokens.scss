@@ -1,0 +1,15 @@
+@use '../../stylesheets/mixins' as *;
+
+:root {
+  --b-Donut-size: var(--b-space-5xl);
+  --b-Donut-size-s: var(--b-space-5xl);
+  --b-Donut-size-xl: calc(var(--b-space) * 14);
+
+  @include mq(m) {
+    --b-Donut-size: calc(var(--b-space) * 6);
+  }
+
+  @include mq(xxxl) {
+    --b-Donut-size-xl: calc(var(--b-space) * 16);
+  }
+}

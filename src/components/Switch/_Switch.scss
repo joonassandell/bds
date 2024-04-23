@@ -1,0 +1,51 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Switch {
+  align-items: center;
+  display: flex;
+  gap: var(--b-space-xs);
+}
+
+.b-Switch-label {
+  @include text(s);
+}
+
+.b-Switch-help {
+  color: var(--b-text-50);
+  line-height: 0;
+}
+
+.b-Switch-slider {
+  align-items: center;
+  background-color: var(--b-neutral-mute-light);
+  border-radius: var(--b-border-radius-pill);
+  display: flex;
+  flex-shrink: 0;
+  height: var(--b-space-m);
+  justify-content: center;
+  position: relative;
+  transition: background-color var(--b-trans-duration) var(--b-ease-in-out);
+  width: var(--b-space-2xl);
+
+  &[data-state='checked'] {
+    background-color: var(--b-success);
+  }
+
+  &:hover:not([data-state='checked']) {
+    background-color: var(--b-neutral-mute);
+  }
+}
+
+.b-Switch-thumb {
+  background-color: var(--b-static-white);
+  border-radius: var(--b-border-radius-pill);
+  display: block;
+  height: calc(var(--b-space-m) - (var(--b-border-width) * 2));
+  transform: translateX(calc(var(--b-space-m) * -0.5));
+  transition: transform var(--b-trans-duration) var(--b-ease);
+  width: calc(var(--b-space-m) - (var(--b-border-width) * 2));
+
+  &[data-state='checked'] {
+    transform: translateX(calc(var(--b-space-m) * 0.5));
+  }
+}

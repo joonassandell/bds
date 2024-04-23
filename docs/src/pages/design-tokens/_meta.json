@@ -1,0 +1,33 @@
+{
+  "color": {
+    "title": "Colour",
+    "theme": {
+      "toc": true
+    }
+  },
+  "border": "Border",
+  "box-shadow": {
+    "display": "hidden"
+  },
+  "font": {
+    "display": "hidden"
+  },
+  "font-size": {
+    "display": "hidden"
+  },
+  "media-queries": {
+    "display": "hidden"
+  },
+  "space": {
+    "display": "hidden"
+  },
+  "size": {
+    "display": "hidden"
+  },
+  "transition": {
+    "display": "hidden"
+  },
+  "z-index": {
+    "display": "hidden"
+  }
+}

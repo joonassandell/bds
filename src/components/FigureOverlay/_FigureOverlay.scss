@@ -1,0 +1,24 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-FigureOverlay {
+  position: relative;
+
+  @include theme('dark') {
+    &:before {
+      background-image: linear-gradient(
+          var(--b-figure-overlay),
+          var(--b-figure-overlay)
+        ),
+        linear-gradient(
+          var(--b-figure-overlay-shade),
+          var(--b-figure-overlay-shade)
+        );
+      box-shadow: inset 0 0 0 var(--b-border-width-s)
+        var(--b-figure-overlay-border);
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+}

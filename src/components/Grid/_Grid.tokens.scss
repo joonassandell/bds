@@ -1,0 +1,20 @@
+@use '../../stylesheets/config' as *;
+@use '../../stylesheets/mixins' as *;
+
+:root {
+  --b-Grid-gap-l: var(--b-space-xl);
+  --b-Grid-gap-m: var(--b-space-m);
+  --b-Grid-gap-s: var(--b-space);
+}
+
+$columns: 12;
+
+$xs: false !default;
+$s: false !default;
+$m: true !default;
+$l: true !default;
+$xl: false !default;
+$xxl: false !default;
+$xxxl: false !default;
+$xxxxl: false !default;
+$xxxxxl: false !default;

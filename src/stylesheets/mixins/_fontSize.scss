@@ -1,0 +1,18 @@
+@use "sass:math";
+@use "../config";
+
+@mixin fontSize($size, $line: 'rhythm', $unit: null, $em-fontSize: config.$util-fontSize-em) {
+  @if $unit == 'em' {
+    font-size: math.div($size, $em-fontSize) * 1em;
+  } @else if $unit == 'px' {
+    font-size: $size;
+  } @else {
+    font-size: math.div($size, config.$util-fontSize-rem) * 1rem;
+  }
+
+  @if $line == 'rhythm' {
+    line-height: ceil(math.div($size, config.$util-lineHeight)) * math.div(config.$util-lineHeight, $size);
+  } @else {
+    line-height: math.div($line, $size);
+  }
+}

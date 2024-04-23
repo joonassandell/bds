@@ -1,0 +1,171 @@
+@use '../../stylesheets/mixins' as *;
+@use 'Grid.tokens';
+
+.b-Grid {
+  --b-Grid-gap: var(--b-Grid-gap-m);
+  display: grid;
+  gap: var(--b-Grid-gap);
+  grid-template-columns: repeat(Grid.$columns, 1fr);
+  width: 100%;
+
+  @include mq($until: xs) {
+    --b-Grid-gap: var(--b-Grid-gap-s);
+  }
+}
+
+/* ======
+ * Gap
+ * ====== */
+
+.b-Grid {
+  &.-gap\:l {
+    @include mq(m) {
+      --b-Grid-gap: var(--b-Grid-gap-l);
+    }
+  }
+
+  &.-gap\:s {
+    --b-Grid-gap: var(--b-Grid-gap-s);
+  }
+
+  &.-gap\:0 {
+    --b-Grid-gap: 0;
+  }
+
+  &.-rowGap {
+    row-gap: var(--b-Grid-gap-m);
+  }
+
+  &.-rowGap\:l {
+    @include mq(m) {
+      row-gap: var(--b-Grid-gap-l);
+    }
+  }
+
+  &.-rowGap\:s {
+    row-gap: var(--b-Grid-gap-s);
+  }
+
+  &.-rowGap\:0 {
+    row-gap: 0;
+  }
+}
+
+/* ======
+ * Custom column size
+ * ====== */
+
+.b-Grid {
+  &.-column\:auto {
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+
+    .b-Grid-col {
+      --b-Grid-span: span;
+    }
+  }
+
+  &.-column\:minColWidth {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--b-Grid-minColWidth), 1fr)
+    );
+
+    .b-Grid-col {
+      --b-Grid-span: span;
+    }
+  }
+}
+
+/* ======
+ * Alignment
+ * ====== */
+
+.b-Grid {
+  &.-align\:end {
+    align-items: self-end;
+  }
+
+  &.-align\:center {
+    align-items: center;
+  }
+}
+
+/* ======
+ * Columns
+ * ====== */
+
+.b-Grid-col {
+  --b-Grid-span: #{Grid.$columns};
+  grid-column: span var(--b-Grid-span, #{Grid.$columns}) / span
+    var(--b-Grid-span, #{Grid.$columns});
+  max-width: 100%;
+}
+
+@mixin gridColumns($breakpoint: null) {
+  $breakpoint: if($breakpoint, \@#{$breakpoint}, null);
+
+  @for $i from 1 through Grid.$columns {
+    .b-Grid-col\:#{$i}#{$breakpoint} {
+      --b-Grid-span: #{$i};
+    }
+    .b-Grid-col.-start\:#{$i}#{$breakpoint} {
+      grid-column-start: #{$i};
+    }
+  }
+}
+
+@include gridColumns();
+
+@if Grid.$xs {
+  @include mq(xs) {
+    @include gridColumns(xs);
+  }
+}
+
+@if Grid.$s {
+  @include mq(s) {
+    @include gridColumns(s);
+  }
+}
+
+@if Grid.$m {
+  @include mq(m) {
+    @include gridColumns(m);
+  }
+}
+
+@if Grid.$l {
+  @include mq(l) {
+    @include gridColumns(l);
+  }
+}
+
+@if Grid.$xl {
+  @include mq(xl) {
+    @include gridColumns(xl);
+  }
+}
+
+@if Grid.$xxl {
+  @include mq(xxl) {
+    @include gridColumns(xxl);
+  }
+}
+
+@if Grid.$xxxl {
+  @include mq(xxxl) {
+    @include gridColumns(xxxl);
+  }
+}
+
+@if Grid.$xxxxl {
+  @include mq(xxxxl) {
+    @include gridColumns(xxxxl);
+  }
+}
+
+@if Grid.$xxxxxl {
+  @include mq(xxxxxl) {
+    @include gridColumns(xxxxxl);
+  }
+}

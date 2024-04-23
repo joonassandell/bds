@@ -1,0 +1,17 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-HeadingInput {
+  @include colorPlaceholder();
+  @include heading($size: h3, $margin: false);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+
+  &.is-autoFocus,
+  &:focus {
+    outline: 0;
+  }
+}

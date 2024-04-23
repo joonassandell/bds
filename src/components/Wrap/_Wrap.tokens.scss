@@ -1,0 +1,77 @@
+@use '../../stylesheets/config' as *;
+@use '../../stylesheets/mixins' as *;
+
+:root {
+  --b-Wrap-space-left-xs: var(--b-space);
+  --b-Wrap-space-right-xs: var(--b-space);
+  --b-Wrap-space-left-s: var(--b-space-m);
+  --b-Wrap-space-right-s: var(--b-space-m);
+  --b-Wrap-space-left-m: var(--b-space-m);
+  --b-Wrap-space-right-m: var(--b-space-m);
+  --b-Wrap-space-left-l: var(--b-space-m);
+  --b-Wrap-space-right-l: var(--b-space-m);
+  --b-Wrap-space-left-2xl: var(--b-space-l);
+  --b-Wrap-space-right-2xl: var(--b-space-l);
+
+  --b-Wrap-width: 1680px;
+  --b-Wrap-width-s: 1328px;
+  --b-Wrap-width-xs: 1104px;
+
+  // Width + spaceLeft xxl + spaceRight xxl
+  --b-Wrap-max-width: 1744px;
+  --b-Wrap-max-width-s: 1392px;
+  --b-Wrap-max-width-xs: 1168px;
+
+  --b-Wrap-space-left: max(
+    env(safe-area-inset-left),
+    var(--b-Wrap-space-left-xs)
+  );
+  --b-Wrap-space-right: max(
+    env(safe-area-inset-right),
+    var(--b-Wrap-space-right-xs)
+  );
+
+  @include mq(xxs) {
+    --b-Wrap-space-left: max(
+      env(safe-area-inset-left),
+      var(--b-Wrap-space-left-s)
+    );
+    --b-Wrap-space-right: max(
+      env(safe-area-inset-right),
+      var(--b-Wrap-space-right-s)
+    );
+  }
+
+  @include mq(m) {
+    --b-Wrap-space-left: max(
+      env(safe-area-inset-left),
+      var(--b-Wrap-space-left-m)
+    );
+    --b-Wrap-space-right: max(
+      env(safe-area-inset-right),
+      var(--b-Wrap-space-right-m)
+    );
+  }
+
+  @include mq(l) {
+    --b-Wrap-space-left: max(
+      env(safe-area-inset-left),
+      var(--b-Wrap-space-left-l)
+    );
+    --b-Wrap-space-right: max(
+      env(safe-area-inset-right),
+      var(--b-Wrap-space-right-l)
+    );
+  }
+
+  @include mq(xxl) {
+    --b-Wrap-space-left: max(
+      env(safe-area-inset-left),
+      var(--b-Wrap-space-left-2xl)
+    );
+    --b-Wrap-space-right: max(
+      env(safe-area-inset-right),
+      var(--b-Wrap-space-right-2xl)
+    );
+  }
+}

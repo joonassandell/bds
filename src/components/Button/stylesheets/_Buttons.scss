@@ -1,0 +1,14 @@
+.b-Buttons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--b-space-s);
+
+  &.-gap\:xs {
+    gap: var(--b-space-xs);
+  }
+
+  &.-gap\:2xs {
+    gap: var(--b-space-2xs);
+  }
+}

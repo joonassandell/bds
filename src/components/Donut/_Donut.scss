@@ -1,0 +1,77 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Donut {
+  background-color: var(--b-Donut-background-color, var(--b-surface-0));
+  border-radius: var(--b-border-radius-full);
+  box-shadow: inset 0 0 0 var(--b-border-width)
+    var(--b-Donut-border-color, var(--b-surface-0-border));
+  flex-shrink: 0;
+  height: var(--b-Donut-size);
+  position: relative;
+  width: var(--b-Donut-size);
+
+  > div {
+    &:first-child {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+.b-Donut-digit {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Donut {
+  &.-size\:s {
+    height: var(--b-Donut-size-s);
+    width: var(--b-Donut-size-s);
+
+    .b-Donut-digit {
+      .b-Digit {
+        .b-Digit-number {
+          @include text($style: subtitle);
+        }
+
+        .b-Digit-number-unit {
+          margin-right: calc(var(--b-space-3xs) * -1);
+        }
+      }
+    }
+  }
+
+  &.-size\:m {
+    @include mq($until: m) {
+      .b-Donut-digit {
+        .b-Digit {
+          .b-Digit-number {
+            @include text($style: subtitle);
+          }
+
+          .b-Digit-number-unit {
+            margin-right: calc(var(--b-space-3xs) * -1);
+          }
+        }
+      }
+    }
+  }
+
+  &.-size\:xl {
+    height: var(--b-Donut-size-xl);
+    width: var(--b-Donut-size-xl);
+  }
+
+  &.-border\:none {
+    box-shadow: none;
+  }
+}

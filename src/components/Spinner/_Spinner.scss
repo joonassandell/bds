@@ -1,0 +1,63 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Spinner {
+  animation: b-rotate 1s linear infinite;
+  height: var(--b-Spinner-size, var(--b-Spinner-size-m));
+  width: var(--b-Spinner-size, var(--b-Spinner-size-m));
+}
+
+.b-Spinner-track,
+.b-Spinner-thumb {
+  fill: none;
+  stroke-width: var(--b-space-2xs);
+}
+
+.b-Spinner-track {
+  opacity: 0.2;
+  stroke: var(--b-Spinner-track-color, var(--b-primary));
+}
+
+.b-Spinner-thumb {
+  stroke: var(--b-Spinner-thumb-color, var(--b-primary-highlight));
+  stroke-dasharray: 25, 75;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Spinner--primaryForeground {
+  --b-Spinner-thumb-color: var(--b-primary-fg);
+  --b-Spinner-track-color: var(--b-primary-fg);
+}
+
+.b-Spinner--success {
+  --b-Spinner-thumb-color: var(--b-success-fg);
+  --b-Spinner-track-color: var(--b-success-fg);
+}
+
+.b-Spinner--warning {
+  --b-Spinner-thumb-color: var(--b-warning-fg);
+  --b-Spinner-track-color: var(--b-warning-fg);
+}
+
+.b-Spinner--error {
+  --b-Spinner-thumb-color: var(--b-error-fg);
+  --b-Spinner-track-color: var(--b-error-fg);
+}
+
+.b-Spinner {
+  &.-size\:l {
+    --b-Spinner-size: var(--b-Spinner-size-l);
+  }
+
+  &.-size\:s {
+    --b-Spinner-size: var(--b-Spinner-size-s);
+  }
+
+  &.-size\:xs {
+    --b-Spinner-size: var(--b-Spinner-size-xs);
+  }
+}

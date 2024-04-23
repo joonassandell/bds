@@ -1,0 +1,275 @@
+@use '../config' as *;
+@use 'fontSize' as *;
+@use 'mq' as *;
+@use 'various' as *;
+@use 'sass:math';
+
+// ======
+// Text sizes & styles
+// ======
+
+@mixin text($size: null, $line: null, $style: null) {
+  /* ======
+   * Size
+   * ====== */
+
+  @if $size == 'l' {
+    font-size: var(--b-font-size-l);
+    line-height: var(--b-line-height-l);
+  }
+
+  @if $size == 'm' {
+    font-size: var(--b-font-size);
+    line-height: var(--b-line-height);
+  }
+
+  @if $size == 's' {
+    font-size: var(--b-font-size-s);
+    line-height: var(--b-line-height-s);
+  }
+
+  @if $size == 'xs' {
+    font-size: var(--b-font-size-xs);
+    line-height: var(--b-line-height-xs);
+  }
+
+  /* ======
+   * Subtitle
+   * ====== */
+
+  @if $style == 'subtitle-l' {
+    @if $size == null {
+      font-size: var(--b-font-size-s);
+      line-height: var(--b-line-height-s);
+    }
+    font-weight: var(--b-font-weight-strong);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @if $style == 'subtitle' {
+    @if $size == null {
+      font-size: var(--b-font-size-xs);
+      line-height: var(--b-line-height-xs);
+    }
+    font-weight: var(--b-font-weight-strong);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @if $style == 'subtitle-s' {
+    @if $size == null {
+      font-size: var(--b-font-size-2xs);
+      line-height: var(--b-line-height-2xs);
+    }
+    font-weight: var(--b-font-weight-strong);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  @if $style == 'subtitle-xs' {
+    @if $size == null {
+      font-size: var(--b-font-size-3xs);
+      line-height: var(--b-line-height-3xs);
+    }
+    font-weight: var(--b-font-weight-strong);
+    text-transform: uppercase;
+  }
+
+  /* ======
+   * Link
+   * ====== */
+
+  @if $style == 'link:base' or $style == 'link' {
+    color: var(--b-text-link);
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    transition:
+      color var(--b-trans-duration),
+      opacity var(--b-trans-duration),
+      text-decoration-color var(--b-trans-duration);
+    transition-timing-function: var(--b-ease-in-out);
+  }
+
+  @if $style == 'link:hover' or $style == 'link' {
+    &:hover,
+    &:focus-visible {
+      color: var(--b-text-link-hover);
+    }
+  }
+
+  /* ======
+   * Text link
+   * ====== */
+
+  @if $style == 'textLink:base' or $style == 'textLink' {
+    color: var(--b-text-100);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.1em;
+    transition:
+      color var(--b-trans-duration),
+      opacity var(--b-trans-duration),
+      text-decoration-color var(--b-trans-duration);
+    transition-timing-function: var(--b-ease-in-out);
+  }
+
+  @if $style == 'textLink:hover' or $style == 'textLink' {
+    &:hover,
+    &:focus-visible {
+      color: var(--b-text-200);
+      text-decoration-color: var(--b-text-200);
+    }
+  }
+
+  @if $style == 'textLinkHover' {
+    color: var(--b-text-200);
+    text-decoration-color: var(--b-text-200);
+  }
+
+  /* ======
+   * Text link underline
+   * ====== */
+
+  @if $style == 'textLinkUnderline:base' or $style == 'textLinkUnderline' {
+    @include text($style: 'textLink:base');
+    text-decoration-color: var(--b-text-50);
+  }
+
+  @if $style == 'textLinkUnderline:hover' or $style == 'textLinkUnderline' {
+    @include text($style: 'textLink:hover');
+  }
+
+  @if $style == 'textLinkUnderlineHover' {
+    @include text($style: 'textLinkHover');
+  }
+
+  /* ======
+   * Text link light
+   * ====== */
+
+  @if $style == 'textLinkLight:base' or $style == 'textLinkLight' {
+    @include text($style: 'textLink:base');
+    color: var(--b-text-50);
+  }
+
+  @if $style == 'textLinkLight:hover' or $style == 'textLinkLight' {
+    @include text($style: 'textLink:hover');
+  }
+
+  @if $style == 'textLinkLightHover' {
+    @include text($style: 'textLinkHover');
+  }
+
+  /* ======
+   * Text link light underline
+   * ====== */
+
+  @if $style ==
+    'textLinkLightUnderline:base' or
+    $style ==
+    'textLinkLightUnderline'
+  {
+    @include text($style: 'textLinkUnderline:base');
+    color: var(--b-text-50);
+  }
+
+  @if $style ==
+    'textLinkLightUnderline:hover' or
+    $style ==
+    'textLinkLightUnderline'
+  {
+    @include text($style: 'textLink:hover');
+  }
+
+  @if $style == 'textLinkLightUnderlineHover' {
+    @include text($style: 'textLinkHover');
+  }
+
+  /* ======
+   * Heading
+   * ====== */
+
+  @if $style == 'headingLink' {
+    color: var(--b-text-heading);
+    transition: color var(--b-trans-duration);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--b-text-link-hover);
+    }
+  }
+
+  @if $style == 'headingLinkUnderline' {
+    color: var(--b-text-heading);
+    text-decoration: underline;
+    transition:
+      color var(--b-trans-duration),
+      text-decoration-color var(--b-trans-duration);
+    transition-timing-function: var(--b-ease-in-out);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--b-text-link-hover);
+      text-decoration-color: var(--b-text-link-hover);
+    }
+  }
+}
+
+// ======
+// Truncate text
+// ======
+//
+// Force overly long spans of text to truncate to a single line.
+
+@mixin textTruncate($max-width: 100%, $important: null) {
+  $important: if($important, !important, null);
+  max-width: var(--b-textTruncate-maxWidth, #{$max-width}) $important;
+  overflow: hidden $important;
+  text-overflow: ellipsis $important;
+  white-space: nowrap $important;
+}
+
+// ======
+// Truncate text with multiple lines
+// ======
+//
+// Works for multiple spans of text without having to apply maximum width.
+// However do not use this if you need to get dimensions from the element your
+// applying this to. Note that this cuts span of text by words, so it may not
+// be ideal for every situation.
+
+@mixin textTruncateClamp($clamp: 1, $orient: vertical, $important: null) {
+  $important: if($important, !important, null);
+  -webkit-box-orient: $orient $important;
+  display: -webkit-box $important;
+  -webkit-line-clamp: var(--b-textTruncateClamp, #{$clamp}) $important;
+  overflow: hidden $important;
+  overflow-wrap: anywhere $important;
+}
+
+// ======
+// Image replacement / text hiding
+// ======
+
+@mixin textHide($important: null) {
+  $important: if($important, !important, null);
+  overflow: hidden $important;
+  text-indent: 1000% $important;
+  white-space: nowrap $important;
+}
+
+// ======
+// Enables font kerning in all browsers.
+// ======
+//
+// 1. Chrome (not Windows), Firefox, IE 10+
+// 2. Chrome (not Windows), Firefox, Safari 6+, iOS, Android
+// 3. Safari 7 and future browsers
+
+@mixin textKern($important: null) {
+  $important: if($important, !important, null);
+  font-feature-settings: 'kern' 1 $important; // [1.]
+  font-kerning: normal $important; // [3.]
+  text-rendering: optimizeLegibility $important; // [2.]
+}

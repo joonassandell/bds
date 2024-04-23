@@ -1,0 +1,34 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Button--secondary {
+  border: var(--b-border-width) solid var(--b-surface-3-border);
+  color: var(--b-text-200);
+
+  .b-Button-loader {
+    background: var(--b-surface-3);
+  }
+
+  @include hoverFocusVisible($focusVisibleProgrammatic: false) {
+    background-color: var(--b-surface-3-hover);
+    border-color: var(--b-surface-3-border-hover);
+    color: var(--b-text-200);
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Button--secondary {
+  &.is-active,
+  &[data-state='open'] {
+    background-color: var(--b-surface-3-active);
+    border-color: var(--b-surface-3-border-active);
+  }
+
+  &.is-disabled {
+    border-color: var(--b-surface-3-border-disabled);
+    color: var(--b-text-50);
+    opacity: var(--b-surface-opacity-disabled);
+  }
+}

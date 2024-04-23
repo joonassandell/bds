@@ -1,0 +1,39 @@
+{
+  "name": "@biocode/ds-docs",
+  "version": "0.0.1",
+  "description": "Biocode Design System documentation",
+  "private": true,
+  "main": "src/pages/index.mdx",
+  "scripts": {
+    "dev": "next dev -p 3004",
+    "build": "npm run lint && next build",
+    "preview": "npm run build && npm run start",
+    "start": "next start -p 3004",
+    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint ./src \"./*.{cjs,ts,js}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joonassandell/biocode-design-system.git",
+    "directory": "docs"
+  },
+  "keywords": [
+    "design system",
+    "documentation",
+    "docs"
+  ],
+  "dependencies": {
+    "@biocode/ds": "0.4.15",
+    "next": "^13.5.5",
+    "nextra": "^2.13.2",
+    "nextra-theme-docs": "^2.13.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tinycolor2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.8.7",
+    "@types/react": "^18.2.30",
+    "@types/tinycolor2": "^1.4.5"
+  }
+}

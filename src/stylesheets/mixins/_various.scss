@@ -1,0 +1,147 @@
+@use 'sass:math';
+@use '../config' as *;
+
+//
+// Reset Button
+//
+@mixin resetButton() {
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-feature-settings: var(--b-font-feature-settings);
+  font-weight: var(--b-font-weight);
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+//
+// List reset
+//
+@mixin resetList() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+//
+// Disabled
+//
+@mixin disabled($opacity: 0.8) {
+  cursor: not-allowed;
+  opacity: $opacity;
+}
+
+//
+// Clear fix
+//
+@mixin clearfix() {
+  &:after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+}
+
+//
+// Hover media query
+//
+@mixin mqHover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+//
+// Touch media query (no hover)
+//
+@mixin mqTouch {
+  @media (pointer: coarse) {
+    @content;
+  }
+}
+
+//
+// On :hover if hover supported
+//
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+//
+// On :focus
+//
+@mixin focus() {
+  &:focus {
+    @content;
+  }
+}
+
+//
+// On :focus-visible or .focus-visible, see README notes
+//
+@mixin focusVisible($programmatic: true) {
+  @if $programmatic {
+    &:focus-visible {
+      @content;
+    }
+  } @else {
+    &.focus-visible {
+      @content;
+    }
+  }
+}
+
+//
+// On :hover if hover is supported and on :focus-visible or .focus-visible
+//
+@mixin hoverFocusVisible($focusVisibleProgrammatic: true) {
+  @include focusVisible($programmatic: $focusVisibleProgrammatic) {
+    @content;
+  }
+
+  @include hover() {
+    @content;
+  }
+}
+
+//
+// On :hover if hover is supported and on :focus
+//
+@mixin hoverFocus() {
+  @include focus() {
+    @content;
+  }
+
+  @include hover() {
+    @content;
+  }
+}
+
+//
+// Detect iOS
+//
+@mixin iOS {
+  @supports (-webkit-touch-callout: none) {
+    @content;
+  }
+}
+
+//
+// Detect Safari (mobile and desktop)
+//
+@mixin safari {
+  // prettier-ignore
+  @supports (background: -webkit-named-image(i)) {
+    @content;
+  }
+}

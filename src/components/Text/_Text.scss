@@ -1,0 +1,128 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Text {
+  color: var(--b-Text-color, currentColor);
+  text-wrap: pretty;
+
+  &.-size\:l {
+    @include text(l);
+  }
+
+  &.-size\:m {
+    @include text(m);
+  }
+
+  &.-size\:s {
+    @include text(s);
+  }
+
+  &.-size\:xs {
+    @include text(xs);
+  }
+
+  a,
+  button {
+    &:not([class]) {
+      @include text($style: 'link');
+    }
+  }
+
+  > *:not(.b-Text) {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > .b-Heading {
+    &:not(:first-child) {
+      > * {
+        margin-top: var(--b-space-l);
+      }
+    }
+  }
+
+  > {
+    // prettier-ignore
+    h1, h2, h3, h4, h5, h6 {
+      &:not([class]):not(:first-child) {
+        margin-top: var(--b-space-l);
+      }
+    }
+  }
+
+  .b-Icon {
+    vertical-align: top;
+  }
+
+  &.-color\:light {
+    --b-Text-color: var(--b-text-50);
+
+    &:not(.-color\:accent\:highlight) {
+      a,
+      button {
+        &:not([class]) {
+          @include text($style: 'textLinkLightUnderline:hover');
+          color: var(--b-text-50);
+        }
+      }
+    }
+  }
+
+  &.-color\:info,
+  &.-color\:success,
+  &.-color\:error,
+  &.-color\:warning,
+  &.-color\:highlight {
+    a:hover {
+      opacity: var(--b-opacity-subtle);
+    }
+  }
+
+  &.-color\:info {
+    &,
+    a,
+    a:hover {
+      color: var(--b-info-fg);
+    }
+  }
+
+  &.-color\:success {
+    &,
+    a,
+    a:hover {
+      color: var(--b-success-fg);
+    }
+  }
+
+  &.-color\:error {
+    &,
+    a,
+    a:hover {
+      color: var(--b-error-fg);
+    }
+  }
+
+  &.-color\:warning {
+    &,
+    a,
+    a:hover {
+      color: var(--b-warning-fg);
+    }
+  }
+
+  &.-color\:highlight {
+    &,
+    a,
+    a:hover {
+      color: var(--b-highlight-fg);
+    }
+  }
+}
+
+.b-Text {
+  &.b-textTruncate * {
+    // The descendants of Text don't inherit correctly truncate style, so pass them here
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}

@@ -1,0 +1,61 @@
+# Popover
+
+## Usage
+
+- Always position popover next to the button or other interface element that toggles it
+- Use a popover to contain controls or information that doesn't need to be shown immediately
+- Use a popover to contain items that will most likely not fit into the current view
+- Use a clearly labelled button to reveal the popover
+- Use the appropriate aria-haspopup and role attributes for both the toggle button and containing items. Please refer to the [MDN documentation on both role values](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup#values) and [child role values](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup#values)
+
+## Guidelines
+
+### If a popover contains actions, they should be always written in sentence case, not title case
+
+The first word should be capitalized and the rest lowercase (unless a proper noun)
+
+- Correct: Create user
+- Incorrect: Create User
+
+# Popover actions should always lead with a strong verb that encourages action
+
+Use the `{verb}`+`{noun}` format except in the case of common actions like Save, Close or Cancel.
+
+- Correct: Edit row
+- Incorrect: Editing options
+
+### Avoid unnecessary words and articles in items, such as “the”, “an” or “a”
+
+- Correct: Change theme
+- Incorrect: Change the theme
+
+### Avoid ending item in punctuation
+
+- Correct: Switch user
+- Incorrect: Switch user.
+
+### Avoid all caps for popover actions
+
+- Correct: Switch user
+- Incorrect: SWITCH USER
+
+### Avoid using horizontal displayed components (eg. List) inside PopoverItem, as it may not display correctly for mobile
+
+### Don't
+
+- Don't hide information inside a popover that is imperative to using the current view
+- Don't obscure other controls that are important with the popover
+- Don't allow the popover to be obscured by other controls or the outer bounds of the current view
+
+## Issues
+
+1. This issue is the same as in Menu. Read more [here](https://github.com/radix-ui/primitives/issues/1522).
+
+<b>Description</b>: Opening the popover will make the page scroll to the place
+that it portals to. If the portal destination is document.body, the page will
+scroll to the end (where the portal is). It should have scrolled to the position
+of the PopoverTrigger instead, but there has been no proper way to do it yet.
+
+There is a walk around for it. However, please remember to remove any autofocus from children of PopoverContent, because it will override the current walk around.
+
+2. Currently, Popover only animates correctly if the side of the PopoverContent is bottom. This should be done in next updates for it.

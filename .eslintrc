@@ -1,0 +1,90 @@
+{
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:typescript-sort-keys/recommended",
+    "plugin:storybook/recommended"
+  ],
+  "ignorePatterns": ["package.json", "package-lock.json", "/node_modules"],
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "rules": {
+        "sort-keys-fix/sort-keys-fix": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "sort-keys-fix",
+    "sort-imports-es6-autofix",
+    "import",
+    "canonical"
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "React.FC": {
+            "fixWith": "FC",
+            "message": "Please use FC instead."
+          }
+        }
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports"
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "canonical/prefer-inline-type-import": 2,
+    "arrow-body-style": ["error", "as-needed"],
+    "import/no-duplicates": "error",
+    "react/display-name": "off",
+    "react/jsx-sort-props": "error",
+    "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "require-await": "error",
+    "sort-imports-es6-autofix/sort-imports-es6": [
+      2,
+      {
+        "ignoreCase": true
+      }
+    ],
+    "sort-keys-fix/sort-keys-fix": "error",
+    "import/no-absolute-path": "error",
+    "no-duplicate-imports": 2
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": true
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.b-Wordmark {
+  color: var(--b-text-200);
+  display: inline-flex;
+  vertical-align: middle;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.b-Wordmark--biocode {
+  svg {
+    // Prevent mobile Safari from cutting the edges in some situations
+    padding: 1px 0;
+  }
+}

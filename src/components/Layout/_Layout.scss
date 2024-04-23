@@ -1,0 +1,125 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Layout {
+  min-height: 100vh;
+
+  @include mq(l) {
+    --b-Layout-aside-width: calc(var(--b-space) * 16);
+    display: grid;
+    grid-template-columns: var(--b-Layout-aside-width) minmax(0, 1fr);
+  }
+
+  @include mq(xxl) {
+    --b-Layout-main-aside-width: calc(var(--b-space) * 19);
+  }
+
+  @include mq(xxxl) {
+    --b-Layout-main-aside-width: calc(var(--b-space) * 21);
+  }
+
+  @include mq(xxxxl) {
+    --b-Layout-aside-width: calc(var(--b-space) * 18);
+    --b-Layout-main-aside-width: calc(var(--b-space) * 22.5);
+  }
+}
+
+.b-Layout-aside {
+  .b-Aside {
+    width: var(--b-Layout-aside-width);
+    z-index: 3;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+.b-Layout-asideTriggerButton {
+  @include mq(l) {
+    display: none;
+  }
+}
+
+.b-Layout-main {
+  &:has(.b-Layout-main-aside) {
+    @include mq(xxl) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--b-Layout-main-aside-width);
+    }
+  }
+}
+
+.b-Layout-main-aside.b-Aside--layout {
+  right: var(--removed-body-scroll-bar-size, 0);
+  z-index: 3;
+
+  @include mq(xxl) {
+    width: var(--b-Layout-main-aside-width);
+  }
+}
+
+.b-Layout-mainAsideTriggerButton {
+  @include mq(xxl) {
+    display: none;
+  }
+}
+
+.b-Layout-bar {
+  background-color: var(--b-surface-0);
+  padding-left: var(--b-space);
+  position: relative;
+  z-index: 2;
+
+  .b-Tabs-list {
+    bottom: calc(var(--b-border-width-s) * -1);
+
+    @include safari() {
+      bottom: calc((var(--b-border-width-s) + 0.5px) * -1);
+    }
+  }
+
+  .b-Tabs-list--primary {
+    .b-Tabs-list-tab-trigger {
+      min-height: calc(var(--b-space-4xl) - var(--b-border-width-s));
+    }
+  }
+
+  &.is-sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  + .b-Layout-bar {
+    z-index: 1;
+  }
+
+  @include mq(l) {
+    padding-left: var(--b-space-l);
+  }
+}
+
+.b-Layout-bar-inner {
+  box-shadow: 0 var(--b-border-width-s) var(--b-border-mute-100-translucent);
+  display: flex;
+  min-height: calc(var(--b-space-4xl) - var(--b-border-width-s));
+  padding-right: var(--b-space);
+}
+
+.b-Layout-bar-label {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.b-Layout-bar-label-heading {
+  @include textTruncate();
+}
+
+.b-Layout-box {
+  isolation: isolate;
+  margin-left: var(--b-space);
+  margin-right: var(--b-space);
+
+  @include mq(l) {
+    margin-left: var(--b-space-l);
+  }
+}

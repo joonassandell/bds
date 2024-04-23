@@ -1,0 +1,254 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Textarea {
+  width: 100%;
+}
+
+.b-Textarea-heading {
+  align-items: flex-end;
+  display: flex;
+  gap: var(--b-space-s);
+  justify-content: space-between;
+  padding: 0 var(--b-space-s) var(--b-space-xs) var(--b-space-s);
+}
+
+.b-Textarea-label-suffix {
+  color: var(--b-text-50);
+}
+
+.b-Textarea-label-beacon {
+  display: inline-block;
+  margin-bottom: var(--b-space-3xs);
+  margin-left: var(--b-space-xs);
+  vertical-align: middle;
+}
+
+.b-Textarea-help {
+  color: var(--b-text-50);
+  line-height: 0;
+  margin-right: var(--b-space-3xs);
+}
+
+.b-Textarea-item {
+  position: relative;
+  z-index: 0;
+}
+
+.b-Textarea-textarea {
+  @include colorPlaceholder();
+  background-clip: padding-box;
+  background-color: var(--b-Textarea-bg, var(--b-surface-1));
+  border: var(--b-border-width) solid transparent;
+  border-radius: var(--b-border-radius) + 1px;
+  color: var(--b-Textarea-color, var(--b-text-200));
+  font-weight: var(--b-font-weight);
+  min-height: var(--b-space-4xl);
+  padding: calc(var(--b-space-xs) - var(--b-space-4xs)) var(--b-space-s)
+    var(--b-space-xs) var(--b-space-s);
+  position: relative;
+  resize: vertical;
+  transition:
+    background-color var(--b-trans-duration),
+    color var(--b-trans-duration);
+  transition-timing-function: var(--b-ease-in-out);
+  vertical-align: top;
+  width: 100%;
+  z-index: 2;
+
+  &::-webkit-resizer {
+    background: transparent;
+    border-color: transparent
+      var(--b-Textarea-border, var(--b-surface-1-border))
+      var(--b-Textarea-border, var(--b-surface-1-border)) transparent;
+    border-style: solid;
+    border-width: var(--b-space);
+  }
+
+  @include hover() {
+    &:not(:focus) {
+      background-color: var(--b-Textarea-bg-hover, var(--b-surface-1-hover));
+
+      ~ .b-Textarea-border {
+        border-color: var(
+          --b-Textarea-border-hover,
+          var(--b-surface-1-border-hover)
+        );
+      }
+
+      &::-webkit-resizer {
+        border-color: transparent
+          var(--b-Textarea-border-hover, var(--b-surface-1-border-hover))
+          var(--b-Textarea-border-hover, var(--b-surface-1-border-hover))
+          transparent;
+      }
+    }
+  }
+
+  @include focus() {
+    background-color: var(--b-Textarea-bg-focus, var(--b-surface-1-focus));
+    outline: 0;
+
+    ~ .b-Textarea-border {
+      border-color: var(
+        --b-Textarea-border-focus,
+        var(--b-surface-1-border-focus)
+      );
+    }
+
+    &::-webkit-resizer {
+      border-color: transparent
+        var(--b-Textarea-border-focus, var(--b-surface-1-border-focus))
+        var(--b-Textarea-border-focus, var(--b-surface-1-border-focus))
+        transparent;
+    }
+  }
+}
+
+.b-Textarea-border {
+  border: var(--b-border-width) solid
+    var(--b-Textarea-border, var(--b-surface-1-border));
+  border-radius: var(--b-border-radius);
+  content: '';
+  inset: 0;
+  position: absolute;
+  transition: border-color var(--b-trans-duration) var(--b-ease-in-out);
+  z-index: 0;
+}
+
+.b-Textarea-loader {
+  border-radius: var(--b-border-radius);
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.b-Textarea-loader-inner {
+  background-image: linear-gradient(
+    45deg,
+    var(--b-primary-100),
+    var(--b-primary),
+    var(--b-Textarea-border, var(--b-surface-1-border)),
+    var(--b-primary-100)
+  );
+  background-size: 300% auto;
+  inset: 0;
+  position: absolute;
+}
+
+.b-Textarea-hint {
+  @include text(s);
+  color: var(--b-text-50);
+  padding: var(--b-space-xs) var(--b-space-s) 0 var(--b-space-s);
+}
+
+.b-Textarea-error,
+.b-Textarea-warning {
+  &.b-Alert.-size\:s {
+    border-radius: 0 0 var(--b-border-radius) var(--b-border-radius);
+    border-top: 0;
+    border-width: var(--b-border-width);
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Textarea {
+  &.-color\:surface\:3 {
+    --b-Textarea-bg: var(--b-surface-3);
+    --b-Textarea-bg-focus: var(--b-surface-3-focus);
+    --b-Textarea-bg-disabled: var(--b-surface-3-disabled);
+    --b-Textarea-border: var(--b-surface-3-border);
+    --b-Textarea-border-hover: var(--b-surface-3-border-hover);
+    --b-Textarea-border-focus: var(--b-surface-3-border-focus);
+    --b-Textarea-border-disabled: var(--b-surface-3-border-disabled);
+  }
+
+  &.is-readOnly,
+  &.is-disabled {
+    .b-Textarea-textarea {
+      pointer-events: none;
+    }
+  }
+
+  &.is-disabled {
+    .b-Textarea-item {
+      opacity: var(--b-surface-opacity-disabled);
+    }
+
+    .b-Textarea-textarea {
+      background-color: var(
+        --b-Textarea-bg-disabled,
+        var(--b-surface-1-disabled)
+      );
+      color: var(--b-text-50);
+
+      &::-webkit-resizer {
+        border-color: transparent
+          var(--b-Textarea-border-disabled, var(--b-surface-1-border-disabled))
+          var(--b-Textarea-border-disabled, var(--b-surface-1-border-disabled))
+          transparent;
+      }
+    }
+
+    .b-Textarea-border {
+      border-color: var(
+        --b-Textarea-border-disabled,
+        var(--b-surface-1-border-disabled)
+      );
+    }
+  }
+
+  &.is-error,
+  &.is-warning {
+    .b-Textarea-textarea {
+      @include hoverFocus() {
+        background-color: var(--b-Textarea-bg-focus, var(--b-surface-1-focus));
+
+        &::-webkit-resizer {
+          border-color: transparent
+            var(--b-Textarea-border, var(--b-surface-1-border))
+            var(--b-Textarea-border, var(--b-surface-1-border)) transparent;
+        }
+      }
+    }
+
+    .b-Textarea-border,
+    .b-Textarea-loader {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &.is-error {
+    .b-Textarea-border {
+      border-color: var(--b-error-border);
+    }
+  }
+
+  &.is-warning {
+    .b-Textarea-border {
+      border-color: var(--b-warning-border);
+    }
+  }
+}
+
+.b-Textarea--plain {
+  .b-Textarea-heading {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .b-Textarea-textarea {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .b-Textarea-border {
+    display: none;
+  }
+}

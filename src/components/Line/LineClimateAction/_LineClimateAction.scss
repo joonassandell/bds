@@ -1,0 +1,49 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-LineClimateAction {
+  display: flex;
+
+  .b-Line {
+    height: calc(var(--b-space) * 19);
+
+    svg {
+      > g {
+        /**
+         * Remove outer y-axis borders
+         */
+        > g:first-child {
+          line {
+            &:last-child {
+              display: none;
+            }
+          }
+
+          line[x1='0'] {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &.-data\:years\:multiple {
+    .b-Line {
+      @include mq($until: ml) {
+        svg {
+          > g {
+            g:nth-child(3) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.b-LineClimateAction-thermometer {
+  svg {
+    margin-top: var(--b-space);
+    width: var(--b-space-ml);
+  }
+}

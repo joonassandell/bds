@@ -1,0 +1,22 @@
+@use "../config" as *;
+@use "../mixins" as *;
+
+/**
+ * Hide visually and from screen readers, but maintain layout
+ */
+.b-invisible { visibility: hidden !important; }
+
+/**
+ * Completely remove from the flow but leave available to screen readers.
+ */
+.b-hideVisually {
+  @include hideVisually(true);
+}
+
+.b-showInFocusVisible {
+  @include showFocusVisible(true);
+}
+
+.b-showInFocusVisibleWithin {
+  @include showFocusVisible(true, ':focus-within');
+}

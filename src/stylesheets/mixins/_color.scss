@@ -1,0 +1,5 @@
+@mixin colorPlaceholder($color: var(--b-text-50)) {
+  &::-moz-placeholder           { color: $color; }
+  &:-ms-input-placeholder       { color: $color; }
+  &::-webkit-input-placeholder  { color: $color; }
+}

@@ -1,0 +1,83 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Button--default {
+  background-color: var(--b-Button-bg, var(--b-surface-3));
+  box-shadow: var(--b-Button-box-shadow, var(--b-shadow));
+  color: var(--b-Button-color, var(--b-text-200));
+  text-shadow: var(--b-Button-text-shadow, none);
+
+  .b-Button-loader {
+    background: var(--b-Button-bg, var(--b-surface-3));
+    inset: var(--b-border-width-s);
+  }
+
+  &:before {
+    border: var(--b-border-width-s) solid var(--b-Button-border, transparent);
+    border-radius: var(--b-border-radius);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: border-color var(--b-trans-duration) var(--b-ease-in-out);
+  }
+
+  @include hoverFocusVisible($focusVisibleProgrammatic: false) {
+    background-color: var(--b-Button-bg-hover, var(--b-surface-3-hover));
+    color: var(--b-Button-color-hover, var(--b-text-200));
+    opacity: var(--b-Button-opacity-hover, 1);
+
+    &:before {
+      border-color: var(
+        --b-Button-border-hover,
+        var(--b-surface-3-border-hover)
+      );
+    }
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Button--default {
+  &.is-active,
+  &[data-state='open'] {
+    background-color: var(--b-surface-3-active);
+
+    &:before {
+      border-color: var(--b-surface-3-border-active);
+    }
+  }
+
+  &.is-disabled {
+    background-color: var(--b-Button-bg-disabled, var(--b-surface-3-disabled));
+    color: var(--b-text-50);
+    opacity: var(--b-surface-opacity-disabled);
+  }
+}
+
+.b-Button--default--plain {
+  background-color: transparent;
+  box-shadow: var(--b-shadow-invisible);
+
+  &.is-active,
+  &[data-state='open'] {
+    box-shadow: var(--b-shadow);
+  }
+
+  &.is-disabled {
+    background-color: transparent;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  @include hoverFocusVisible($focusVisibleProgrammatic: false) {
+    &:not(.is-active):not([data-state='open']) {
+      background-color: var(--b-Button-bg-hover var(--b-surface-3-hover));
+      box-shadow: var(--b-shadow);
+      opacity: 1;
+    }
+  }
+}

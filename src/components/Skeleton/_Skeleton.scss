@@ -1,0 +1,67 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Skeleton {
+  background: var(--b-surface-0-inactive);
+  border-radius: var(--b-border-radius);
+  display: flex;
+  height: auto;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: fit-content;
+
+  &:empty:before {
+    content: '\00a0';
+  }
+
+  &:after {
+    animation: var(--b-trans-duration-2xl) var(--b-ease-in-out) infinite
+      b-left-to-right;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--b-surface-0-glare),
+      transparent
+    );
+    content: '';
+    inset: 0;
+    position: absolute;
+    transform: translateX(-100%);
+  }
+
+  > * {
+    visibility: hidden;
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Skeleton--text {
+  border-radius: calc(var(--b-border-radius) + 1px);
+  transform: scaleY(0.75);
+  width: 100%;
+}
+
+.b-Skeleton--circle {
+  border-radius: var(--b-border-radius-full);
+}
+
+.b-Skeleton--rectangle {
+  border-radius: 0;
+}
+
+/* ======
+ * Skeleton Group
+ * ====== */
+
+.b-Skeletons {
+  &:not(.is-horizontal) {
+    > .b-Skeleton--text {
+      &:last-child:not(:only-child) {
+        width: calc(var(--b-Skeleton-width) - 20%);
+      }
+    }
+  }
+}

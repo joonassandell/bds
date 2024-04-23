@@ -1,0 +1,23 @@
+.b-Separator {
+  background-color: var(--b-Separator-color, var(--b-surface-0-border));
+
+  &[data-orientation='horizontal'] {
+    height: var(--b-border-width-s);
+    min-width: var(--b-space-ms);
+    width: 100%;
+
+    &.-border\:size\:l {
+      height: var(--b-border-width);
+    }
+  }
+
+  &[data-orientation='vertical'] {
+    height: 100%;
+    min-height: var(--b-space-ms);
+    width: var(--b-border-width-s);
+
+    &.-border\:size\:l {
+      width: var(--b-border-width);
+    }
+  }
+}

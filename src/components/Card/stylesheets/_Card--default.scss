@@ -1,0 +1,148 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Card--default {
+  border: var(--b-border-width-s) var(--b-Card-border-style, solid)
+    var(--b-Card-border-color, var(--b-border-mute-strong));
+
+  .b-Card-top {
+    align-items: flex-start;
+    border-radius: var(--b-border-radius) var(--b-border-radius) 0 0;
+    display: flex;
+    gap: var(--b-space-s);
+    padding: var(--b-space-ms) var(--b-space-ms) 0 var(--b-space-ms);
+  }
+
+  .b-Card-top-left {
+    flex-shrink: 0;
+
+    .b-Donut {
+      --b-Donut-background-color: var(--b-surface-1);
+      --b-Donut-border-color: var(--b-surface-1-border);
+      margin: calc((var(--b-space-xs) * -1));
+    }
+  }
+
+  .b-Card-top-right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  .b-Card-top-left,
+  .b-Card-top-right {
+    min-width: 0;
+  }
+
+  .b-Card-logo {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: var(--b-bg-static-50);
+    border: var(--b-border-width-s) solid var(--b-border-mute-200-translucent);
+    border-radius: 100%;
+    display: flex;
+    height: var(--b-space-4xl);
+    justify-content: center;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding: var(--b-space-xs);
+    position: relative;
+    width: var(--b-space-4xl);
+
+    /**
+     * 1. Slightly sharper image quality in chrome
+     */
+    img {
+      image-rendering: -webkit-optimize-contrast; // [1.]
+      max-height: var(--b-space-xl);
+      transform: translateZ(0); // [1.]
+      width: auto !important;
+    }
+  }
+
+  .b-Card-inner {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto;
+    padding: var(--b-space-ms);
+    padding-bottom: var(--b-space-ms);
+  }
+
+  .b-Card-content {
+    margin-top: var(--b-space);
+  }
+
+  .b-Card-figure {
+    aspect-ratio: var(--b-Card-image-aspect-ratio);
+    background-color: var(--b-surface-0-inactive);
+    margin: 0 0 calc(var(--b-border-width-s) * -1) 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+
+    &.-layout\:fill {
+      align-items: flex-end;
+      aspect-ratio: var(--b-Card-image-aspect-ratio, 2/1);
+      display: flex;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+      }
+
+      @supports not (aspect-ratio: 1) {
+        padding-top: calc(100% / var(--b-Card-image-aspect-ratio, 2/1));
+      }
+    }
+
+    &:last-child {
+      border-radius: 0 0 var(--b-border-radius-l) var(--b-border-radius-l);
+      margin: 0;
+    }
+
+    @include theme('dark') {
+      margin-left: calc(var(--b-border-width-s) * -1);
+      width: calc(100% + (var(--b-border-width-s) * 2));
+    }
+  }
+
+  /**
+   * For Next.js next/image
+   */
+  .b-Card-figure--custom {
+    > div {
+      display: block !important;
+      position: static !important;
+    }
+  }
+
+  .b-Card-footer {
+    @include text(xs);
+    align-items: center;
+    border-color: var(--b-Card-border-color, var(--b-border-mute-strong));
+    border-top-style: inherit;
+    border-top-width: inherit;
+    display: flex;
+    gap: var(--b-space-s);
+    min-height: var(--b-space-3xl);
+    padding: var(--b-space-s) var(--b-space-ms);
+  }
+
+  .b-Card-footer-left,
+  .b-Card-footer-right {
+    min-width: 0;
+
+    &:has(.b-Skeleton) {
+      min-width: 33.333%;
+    }
+  }
+
+  .b-Card-footer-right {
+    margin-left: auto;
+  }
+}

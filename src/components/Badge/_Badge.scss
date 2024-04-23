@@ -1,0 +1,110 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Badge {
+  @include text($style: subtitle);
+  align-items: center;
+  border: var(--b-border-width-s) solid transparent;
+  border-radius: var(--b-border-radius);
+  display: inline-flex;
+  flex-shrink: 0;
+  max-width: 100%;
+  min-height: var(--b-space-m);
+  padding: var(--b-space-3xs) var(--b-space-xs);
+  position: relative;
+  text-decoration: none;
+
+  .b-Beacon {
+    margin: 0 0 0 var(--b-space-2xs);
+  }
+}
+
+.b-Badge-notify {
+  background-color: transparent;
+  border: var(--b-border-width-s) solid transparent;
+  border-radius: var(--b-border-radius);
+  inset: calc(var(--b-border-width-s) * -1);
+  position: absolute;
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Badge--neutral {
+  background-color: var(--b-neutral-bg);
+  border-color: var(--b-neutral-border);
+  color: var(--b-text-200);
+
+  .b-Badge-notify {
+    border-color: var(--b-primary);
+  }
+}
+
+.b-Badge--info {
+  background-color: var(--b-info-bg);
+  border-color: var(--b-info-border);
+  color: var(--b-info-fg);
+
+  .b-Badge-notify {
+    border-color: var(--b-primary);
+  }
+}
+
+.b-Badge--success {
+  background-color: var(--b-success-bg);
+  border-color: var(--b-success-border);
+  color: var(--b-success-fg);
+
+  .b-Badge-notify {
+    border-color: var(--b-success-fg);
+  }
+}
+
+.b-Badge--warning {
+  background-color: var(--b-warning-bg);
+  border-color: var(--b-warning-border);
+  color: var(--b-warning-fg);
+
+  .b-Badge-notify {
+    border-color: var(--b-warning-fg);
+  }
+}
+
+.b-Badge--error {
+  background-color: var(--b-error-bg);
+  border-color: var(--b-error-border);
+  color: var(--b-error-fg);
+
+  .b-Badge-notify {
+    border-color: var(--b-error-fg);
+  }
+}
+
+.b-Badge--highlight {
+  background-color: var(--b-highlight-bg);
+  border-color: var(--b-highlight-border);
+  color: var(--b-highlight-fg);
+
+  .b-Badge-notify {
+    border-color: var(--b-highlight-fg);
+  }
+}
+
+.b-Badge--primary {
+  background-color: var(--b-primary);
+  border-color: var(--b-primary);
+  color: var(--b-primary-static-50);
+
+  // Barely visible, we should implement some other notification style
+  .b-Badge-notify {
+    border-color: var(--b-primary-800);
+  }
+}
+
+.b-Badge {
+  &.-size\:s {
+    @include text($style: subtitle-s);
+    min-height: var(--b-space-ms);
+    padding: var(--b-space-4xs) var(--b-space-2xs);
+  }
+}

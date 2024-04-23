@@ -1,0 +1,43 @@
+# Menu
+
+## Usage
+
+- Use to let a user choose one option from an options menu
+- Use when you don't know how many options there will be
+- Use hint text and placeholder to provide additional, non-critical instructions
+- Don't use select when you want to navigate between views / pages
+
+## Guidelines
+
+### Select labels act as a title for the select field. Unless used for Marketing purposes, label should typically be short and preferably noun form
+
+The first word should be capitalized and the rest lowercase (unless a proper noun):
+
+- Correct: Choose your favorite instrument
+- Correct: Favorite instrument
+- Incorrect: What is your favorite instrument?
+
+### When writing select label, always write them in sentence case, not title case. The first word should be capitalized and the rest lowercase (unless a proper noun). This applied for select options as well.
+
+- Correct: Favorite instrument
+- Correct: Aeolian harp
+- Incorrect: Favorite Instrument
+- Incorrect: Aeolian Harp
+
+### Do not use colons in select labels
+
+- Correct: Select favorite instrument
+- Incorrect: Select favorite instrument:
+
+### Avoid using punctuations for select options
+
+- Correct: Piano
+- Incorrect: Piano:
+
+### Don't
+
+- Don't use select when you want to navigate between views / pages
+
+## Issues
+
+- Tooltip causes issues with focus (stays forever focused) when value is selected and the tooltip also keeps popping up for no reason even when the selected valus isn't truncated. This is especially noticeable with multi select.

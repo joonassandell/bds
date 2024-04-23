@@ -1,0 +1,58 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-ScrollArea {
+  @include hover() {
+    .b-ScrollArea-scrollbar {
+      animation: b-fadeIn var(--b-ease-in-out) var(--b-trans-duration);
+      opacity: 1;
+    }
+  }
+}
+
+.b-ScrollArea-viewport {
+  isolation: isolate;
+  z-index: 0;
+}
+
+.b-ScrollArea-scrollbar {
+  display: flex;
+  opacity: 0;
+  touch-action: none;
+  transition: opacity var(--b-trans-duration);
+  will-change: opacity;
+  z-index: 3;
+
+  &[data-orientation='vertical'] {
+    width: 6px;
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+    height: 6px;
+  }
+}
+
+.b-ScrollArea-scrollbar-thumb {
+  background-color: var(--b-scrollbar-thumb);
+  border-radius: var(--b-border-radius-pill);
+  flex: 1;
+  position: relative;
+  transition: background-color var(--b-trans-duration) var(--b-ease-in-out);
+
+  // Increase target size for touch devices
+  &:before {
+    content: '';
+    height: 100%;
+    left: 50%;
+    min-height: 24px;
+    min-width: 24px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: var(--b-scrollbar-thumb-hover);
+  }
+}

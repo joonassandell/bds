@@ -1,0 +1,84 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Progress {
+  color: var(--b-text-200);
+  width: 100%;
+}
+
+.b-Progress-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: var(--b-space-2xs);
+  }
+}
+
+.b-Progress-row--subtitle {
+  justify-content: flex-end;
+
+  .b-Subtitle {
+    margin-bottom: 0;
+  }
+}
+
+.b-Progress-row--percent {
+  min-height: var(--b-space);
+}
+
+.b-Progress-label-suffix {
+  @include text(s);
+  color: var(--b-text-50);
+  margin-left: var(--b-space-2xs);
+}
+
+.b-Progress-progress {
+  background-color: var(--b-surface-0-inactive);
+  border-radius: var(--b-border-radius-pill);
+  height: var(--b-space-xs);
+  overflow: hidden;
+  position: relative;
+  width: calc(100% - var(--b-Progress-percentTextWidth));
+}
+
+.b-Progress-progress-inner {
+  background-color: var(--b-primary);
+  border-radius: var(--b-border-radius-pill);
+  height: 100%;
+  position: absolute;
+  will-change: width;
+  z-index: 1;
+}
+
+.b-Progress-percent-text {
+  @include text(xs);
+  color: var(--b-text-50);
+  display: flex;
+  justify-content: flex-end;
+  margin-left: var(--b-space-xs);
+  width: var(--b-Progress-percentTextWidth);
+}
+
+.b-Progress-loader,
+.b-Progress-loader-inner {
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.b-Progress-loader-inner {
+  background-image: linear-gradient(
+    45deg,
+    var(--b-surface-0-inactive),
+    var(--b-surface-0-glare),
+    var(--b-surface-0-inactive)
+  );
+  background-size: 300% auto;
+}
+
+.b-Progress-amount,
+.b-Progress-percent-text {
+  font-feature-settings: var(--b-font-feature-settings-numeric);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,27 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Flex {
+  gap: var(--b-space);
+
+  &.-gap\:l {
+    @include mq(m) {
+      gap: var(--b-space-l);
+    }
+  }
+
+  &.-gap\:s {
+    gap: var(--b-space-s);
+  }
+
+  &.-gap\:xs {
+    gap: var(--b-space-xs);
+  }
+
+  &.-gap\:2xs {
+    gap: var(--b-space-2xs);
+  }
+
+  &.-gap\:0 {
+    gap: unset;
+  }
+}

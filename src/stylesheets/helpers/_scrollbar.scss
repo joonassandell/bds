@@ -1,0 +1,11 @@
+@use '../config' as *;
+@use '../mixins' as *;
+
+.b-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--b-scrollbar-thumb) var(--b-scrollbar-track);
+  scrollbar-width: var(--b-scrollbar-width);
+}

@@ -1,0 +1,159 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-AuthLayout {
+  background: linear-gradient(
+    to right,
+    var(--b-surface-0-pop) 50%,
+    var(--b-surface-0) 50%
+  );
+  position: relative;
+}
+
+.b-AuthLayout-bar {
+  inset: auto 0;
+  padding: var(--b-space) var(--b-Wrap-space-right) var(--b-space)
+    var(--b-Wrap-space-left);
+  position: absolute;
+  z-index: 1;
+
+  @include mq($until: l) {
+    + .b-AuthLayout-main {
+      .b-AuthLayout-content {
+        padding-top: calc(var(--b-space-4xl) + var(--b-space-3xs));
+      }
+    }
+  }
+
+  @include mq(l) {
+    padding: var(--b-space);
+  }
+}
+
+.b-AuthLayout-bar-inner {
+  display: flex;
+  justify-content: flex-end;
+
+  @include mq($until: l) {
+    margin: 0 auto;
+    max-width: calc(var(--b-space) * 28);
+  }
+}
+
+.b-AuthLayout-main {
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+
+  @include mq($until: l) {
+    overflow: hidden;
+  }
+}
+
+.b-AuthLayout-illustrations {
+  height: 100vh;
+  min-height: calc(var(--b-space) * 40);
+  position: sticky;
+  top: 0;
+
+  .b-Illustration {
+    max-width: calc(var(--b-space) * 15);
+    position: absolute;
+
+    @media (min-height: em(900px)) {
+      max-width: calc(var(--b-space) * 18);
+    }
+
+    @include mq($until: m) {
+      max-width: calc(var(--b-space) * 15);
+    }
+
+    @include mq(l) {
+      width: 50%;
+
+      @media (min-height: em(900px)) {
+        max-width: calc(var(--b-space) * 18);
+      }
+    }
+  }
+
+  .b-Illustration:first-child {
+    right: calc(var(--b-space) * -8);
+    top: -8%;
+
+    @include mq(m) {
+      right: calc(var(--b-space) * 10);
+      top: 6%;
+    }
+
+    @include mq(l) {
+      right: 15%;
+    }
+  }
+
+  .b-Illustration:nth-child(2) {
+    bottom: calc(var(--b-space) * -8);
+    left: calc(var(--b-space) * -5.5);
+
+    @include mq(m) {
+      bottom: calc(var(--b-space) * 6);
+      left: calc(var(--b-space) * -5);
+    }
+
+    @include mq(l) {
+      bottom: auto;
+      top: 40%;
+    }
+  }
+
+  .b-Illustration:nth-child(3) {
+    display: none;
+
+    @include mq(m) {
+      bottom: calc(var(--b-space) * -3);
+      display: block;
+      right: calc(var(--b-space) * -4);
+    }
+
+    @include mq(l) {
+      bottom: calc(var(--b-space) * 2);
+      right: calc(var(--b-space) * -3);
+    }
+  }
+
+  @include mq($until: l) {
+    inset: 0;
+    position: absolute;
+    z-index: 0;
+  }
+}
+
+.b-AuthLayout-content {
+  display: grid;
+  padding: var(--b-space-xl) var(--b-Wrap-space-right) var(--b-space-xl)
+    var(--b-Wrap-space-left);
+  place-items: center;
+
+  @include mq(m) {
+    padding-bottom: calc(var(--b-space) * 8);
+    padding-top: calc(var(--b-space) * 8);
+  }
+}
+
+.b-AuthLayout-content-inner {
+  max-width: calc(var(--b-space) * 28);
+  width: 100%;
+
+  @include mq($until: l) {
+    background-color: var(--b-surface-0);
+    border: var(--b-border-width-s) solid var(--b-surface-0-border);
+    border-radius: var(--b-border-radius-l);
+    padding: var(--b-space-m) var(--b-space-l);
+    position: relative;
+    z-index: 1;
+  }
+
+  @include mq(l) {
+    max-width: calc(var(--b-space) * 26);
+    padding-left: var(--b-space);
+  }
+}

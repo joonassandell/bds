@@ -1,0 +1,15 @@
+@use "../config" as *;
+@use "../mixins" as *;
+
+@mixin createFlexClass($breakpoint: null) {
+  $bp: if($breakpoint, \@#{$breakpoint}, null);
+  .b-flex#{$bp} { display: flex; }
+}
+
+@include createFlexClass();
+
+@each $bp, $value in $helper-breakpoints {
+  @include mq($bp) {
+    @include createFlexClass($bp);
+  }
+}

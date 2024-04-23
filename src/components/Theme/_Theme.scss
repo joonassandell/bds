@@ -1,0 +1,9 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Theme {
+  @include theme('dark', $append: true) {
+    --b-shadow: inset 0 0 0 1px hsl(var(--b-shadow-hsl-edge) / 0.35);
+    --b-shadow-left: -1px 0 0 hsl(var(--b-shadow-hsl-edge) / 0.35);
+    --b-shadow-right: 1px 0 0 hsl(var(--b-shadow-hsl-edge) / 0.35);
+  }
+}

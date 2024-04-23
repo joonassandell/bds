@@ -1,0 +1,36 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Tooltip {
+  // position: relative;
+  // z-index: var(--b-z-index-900);
+}
+
+.b-Tooltip-content {
+  @include text(s);
+  background-color: var(--b-surface-1);
+  border-radius: var(--b-border-radius);
+  box-shadow: var(--b-shadow);
+  color: var(--b-text-200);
+  max-width: calc(var(--b-space) * 15);
+  min-width: fit-content;
+  padding: var(--b-space-xs) var(--b-space-s);
+
+  &[data-state='delayed-open'] {
+    animation: b-fadeIn var(--b-trans-duration) var(--b-ease-in-out);
+  }
+}
+
+.b-Tooltip-arrow {
+  fill: var(--b-surface-1);
+  filter: drop-shadow(
+    0 var(--b-border-width) 0 hsl(var(--b-shadow-hsl-edge) / 0.35)
+  );
+  position: relative;
+  top: calc(var(--b-border-width) * -1);
+
+  @include theme('dark') {
+    filter: drop-shadow(
+      0 var(--b-border-width) 0 hsl(var(--b-shadow-hsl-edge) / 0.45)
+    );
+  }
+}

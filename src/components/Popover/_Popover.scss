@@ -1,0 +1,52 @@
+@use '../../stylesheets/mixins' as *;
+@use '../Tooltip';
+
+.b-Popover {
+  // position: relative;
+  // z-index: var(--b-z-index-800);
+}
+
+.b-Popover-content {
+  background-color: var(--b-surface-1);
+  border-radius: var(--b-border-radius);
+  box-shadow: var(--b-shadow);
+  color: var(--b-text-200);
+  list-style: none;
+  margin: 0;
+  margin-top: var(--b-space-m);
+  max-height: var(--b-Popover-max-height);
+  min-width: var(--b-Popover-min-width);
+  // z-index: var(--b-z-index-800);
+
+  &.-minWidth\:m {
+    min-width: var(--b-Popover-min-width-m);
+  }
+
+  &.-minWidth\:l {
+    min-width: var(--b-Popover-min-width-l);
+  }
+
+  &[data-side='bottom'] {
+    .b-Popover-arrow {
+      top: -2px;
+    }
+  }
+}
+
+.b-Popover-content-inner {
+  padding: var(--b-space-m);
+
+  @include mq($until: s) {
+    max-width: 320px;
+  }
+}
+
+.b-Popover-close {
+  position: absolute;
+  right: var(--b-space-xs);
+  top: var(--b-space-xs);
+}
+
+.b-Popover-arrow {
+  @extend .b-Tooltip-arrow;
+}

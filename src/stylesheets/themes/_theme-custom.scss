@@ -1,0 +1,12 @@
+@use '../../stylesheets/config' as *;
+@use '../../stylesheets/mixins' as *;
+
+/**
+ * For custom theme create hues which inherits to b-surface-x, b-bg-x etc.
+ * This is here just as a placeholder for now.
+ */
+.b-theme\:custom {
+  --b-bg-h: 224;
+  --b-bg-s: 100%;
+  --b-bg-l: 100%;
+}

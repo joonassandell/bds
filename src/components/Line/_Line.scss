@@ -1,0 +1,35 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Line {
+  height: calc(var(--b-space) * 22);
+  width: 100%;
+
+  svg {
+    > g {
+      // Axis bottom and left
+      > g {
+        &:nth-child(3),
+        &:nth-child(4) {
+          text {
+            @include text($style: subtitle);
+          }
+        }
+      }
+
+      // Mesh strokes
+      > line {
+        stroke: var(--b-border-mute-900) !important;
+      }
+    }
+  }
+}
+
+/**
+ * Temporary until the same logic from Donut.tsx is applied to NivoTooltip.tsx
+ */
+.b-Line-tooltip.b-NivoTooltip {
+  .b-Text {
+    max-width: calc(var(--b-space) * 16);
+    white-space: normal;
+  }
+}

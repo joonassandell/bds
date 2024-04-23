@@ -1,0 +1,203 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-SiteHeader {
+  @include text(m);
+  font-weight: var(--b-font-weight-medium);
+  height: var(--b-SiteHeader-height);
+
+  .b-Separator {
+    &[data-orientation='vertical'] {
+      height: unset;
+    }
+  }
+
+  &.is-scrolled .b-SiteHeader-inner {
+    background-color: hsl(var(--b-static-white-hsl) / 0.8);
+  }
+
+  @include theme('dark') {
+    &.is-scrolled .b-SiteHeader-inner {
+      background-color: hsl(var(--b-bg-static-900-hsl) / 0.8);
+    }
+  }
+}
+
+.b-SiteHeader-inner {
+  backdrop-filter: blur(10px);
+  border-bottom: var(--b-border-width-s) solid
+    var(--b-border-mute-200-translucent);
+  display: flex;
+  height: var(--b-SiteHeader-height);
+  inset: auto 0 auto 0;
+  min-width: var(--b-root-min-width);
+  padding-right: var(--removed-body-scroll-bar-size);
+  position: fixed;
+  transition:
+    background-color var(--b-trans-duration-m),
+    border-color var(--b-trans-duration-m);
+  transition-timing-function: var(--b-ease-in-out);
+  z-index: 1;
+}
+
+.b-SiteHeader-wrap {
+  display: grid;
+  grid-template-columns: var(--b-SiteHeader-side-width, 1fr) auto;
+  margin: 0 auto;
+  max-width: var(--b-SiteHeader-wrap-max-width);
+  width: 100%;
+}
+
+.b-SiteHeader-side {
+  padding: 0 var(--b-SiteHeader-side-space-right) 0
+    var(--b-SiteHeader-side-space-left);
+
+  @include mq($until: SiteHeader-s) {
+    padding-right: 0;
+  }
+}
+
+.b-SiteHeader-wordmark {
+  display: flex;
+  height: var(--b-SiteHeader-height);
+  transition: opacity var(--b-trans-duration) var(--b-ease-in-out);
+
+  &:focus-visible,
+  &:hover {
+    opacity: var(--b-opacity-subtle);
+    outline: 0;
+  }
+
+  .b-Wordmark {
+    width: calc(var(--b-space) * 7.5);
+
+    @include mq(SiteHeader-l) {
+      width: calc(var(--b-space) * 9);
+    }
+  }
+}
+
+.b-SiteHeader-main {
+  display: flex;
+  gap: var(--b-space);
+  padding: 0 var(--b-SiteHeader-main-space-right) 0
+    var(--b-SiteHeader-main-space-left);
+
+  @include mq($until: SiteHeader-s) {
+    padding-left: 0;
+  }
+}
+
+.b-SiteHeader-nav {
+  > ul {
+    align-items: center;
+    display: flex;
+    gap: var(--b-space-s);
+
+    @include mq(SiteHeader-l) {
+      gap: var(--b-space);
+    }
+  }
+
+  @include mq($until: SiteHeader-xl) {
+    display: none;
+  }
+}
+
+.b-SiteHeader-nav-item {
+  align-items: center;
+  display: flex;
+  gap: var(--b-space-xs);
+}
+
+.b-SiteHeader-nav-link {
+  --b-textTruncate-maxWidth: 30ch;
+  border-top: 3px solid transparent;
+  color: var(--b-text-200);
+  display: grid;
+  font-weight: inherit;
+  padding-bottom: var(--b-space-m);
+  padding-top: calc(var(--b-space-m) - 2px);
+
+  .b-SiteHeader-nav-item.is-active & {
+    border-top-color: var(--b-primary);
+  }
+
+  @include mq(SiteHeader-xxxl) {
+    padding-top: calc(var(--b-space-ms));
+
+    &.b-Link {
+      @include text(l);
+    }
+  }
+}
+
+.b-SiteHeader-nav-item--icon {
+  position: relative;
+
+  .b-Mark {
+    width: var(--b-space-m);
+  }
+
+  &.is-active {
+    .b-SiteHeader-nav-link {
+      .b-SiteHeader-nav-item-icon--hover {
+        opacity: 1;
+        transition-delay: 0;
+      }
+    }
+  }
+
+  .b-SiteHeader-nav-link {
+    padding-left: var(--b-space-l);
+
+    &:hover,
+    &:focus-visible {
+      .b-SiteHeader-nav-item-icon--hover {
+        opacity: 1;
+        transition-delay: 0;
+      }
+    }
+  }
+}
+
+.b-SiteHeader-nav-item-icon {
+  left: 0;
+  margin-top: -3px;
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  transition: var(--b-trans-duration) opacity var(--b-ease-in-out);
+}
+
+.b-SiteHeader-nav-item-icon--hover {
+  opacity: 0;
+  z-index: 1;
+}
+
+.b-SiteHeader-buttons.b-Buttons {
+  margin-left: auto;
+
+  @include mq($until: SiteHeader-xxs) {
+    gap: var(--b-space-xs);
+  }
+}
+
+.b-SiteHeader-buttons-icon,
+.b-SiteHeader-buttons-separator,
+.b-SiteHeader-buttons-contact {
+  @include mq($until: SiteHeader-s) {
+    display: none;
+  }
+}
+
+.b-SiteHeader-buttons-menu.b-Button {
+  margin-left: calc(var(--b-space-2xs) * -1);
+  margin-right: calc(var(--b-space-xs) * -1);
+
+  @include mq(SiteHeader-xl) {
+    display: none;
+  }
+}
+
+.b-SiteHeader-aside {
+  @include text(m);
+}

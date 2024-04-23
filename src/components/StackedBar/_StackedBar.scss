@@ -1,0 +1,54 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-StackedBar {
+  @include text(xs);
+  height: var(--b-StackedBar-height);
+  width: 100%;
+
+  svg {
+    overflow: visible;
+
+    > rect {
+      &:first-child {
+        clip-path: inset(0 round var(--b-border-radius-pill));
+        fill: var(--b-surface-0-inactive);
+      }
+    }
+
+    > g > g {
+      // Labels
+      > text {
+        font-weight: var(--b-font-weight-500);
+      }
+
+      // Ticks
+      > g > text {
+        fill: var(--b-text-50) !important;
+        font-weight: var(--b-font-weight-strong);
+      }
+
+      > g > line {
+        stroke: var(--b-border-mute-700) !important;
+      }
+    }
+  }
+}
+
+.b-StackedBar-bar {
+  &.-first {
+    clip-path: inset(0% -100% 0% 0% round var(--b-border-radius-pill));
+  }
+  &.-last {
+    clip-path: inset(0% 0% 0% -100% round var(--b-border-radius-pill));
+  }
+}
+
+/**
+ * Temporary until the same logic from Donut.tsx is applied to NivoTooltip.tsx
+ */
+.b-StackedBar-tooltip.b-NivoTooltip {
+  .b-Text {
+    max-width: calc(var(--b-space) * 16);
+    white-space: normal;
+  }
+}

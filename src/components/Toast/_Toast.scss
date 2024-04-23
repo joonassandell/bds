@@ -1,0 +1,139 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Toast {
+  position: fixed;
+}
+
+.b-Toast-main {
+  @include text(s);
+  background-color: var(--b-surface-1);
+  border: var(--b-border-width-s) solid transparent;
+  border-radius: var(--b-border-radius);
+  padding: var(--b-space-s);
+  position: relative;
+  width: calc(var(--b-space) * 18);
+
+  @include mq(m) {
+    width: calc(var(--b-space) * 20);
+  }
+}
+
+.b-Toast-root {
+  list-style-type: none;
+}
+
+.b-Toast-viewport {
+  margin: 0;
+  padding: 0;
+}
+
+.b-Toast-content {
+  display: flex;
+  gap: var(--b-space-2xs);
+  justify-content: space-between;
+}
+
+.b-Toast-content-main {
+  display: flex;
+  gap: var(--b-space-xs);
+  margin-top: var(--b-space-4xs);
+}
+
+.b-Toast-subtitle {
+  margin-bottom: var(--b-space-2xs);
+  margin-top: var(--b-space-4xs);
+}
+
+.b-Toast-icon {
+  display: flex;
+  position: relative;
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Toast-main--default {
+  background-color: var(--b-surface-1);
+  border: 0;
+  box-shadow: var(--b-shadow);
+  color: var(--b-text-200);
+}
+
+.b-Toast-main--info {
+  background-color: var(--b-info-bg);
+  border-color: var(--b-info-border);
+  color: var(--b-info-fg);
+}
+
+.b-Toast-main--success {
+  background-color: var(--b-success-bg);
+  border-color: var(--b-success-border);
+  color: var(--b-success-fg);
+}
+
+.b-Toast-main--warning {
+  background-color: var(--b-warning-bg);
+  border-color: var(--b-warning-border);
+  color: var(--b-warning-fg);
+}
+
+.b-Toast-main--error {
+  background-color: var(--b-error-bg);
+  border-color: var(--b-error-border);
+  color: var(--b-error-fg);
+}
+
+.b-Toast {
+  &.-position\:relative {
+    position: relative;
+  }
+
+  &.-position\:top {
+    left: 50%;
+    top: var(--b-space-m);
+    transform: translateX(-50%);
+  }
+
+  &.-position\:top-right {
+    left: auto;
+    right: var(--b-space-m);
+    top: var(--b-space-m);
+  }
+
+  &.-position\:bottom-right {
+    bottom: var(--b-space-m);
+    left: auto;
+    right: var(--b-space-m);
+  }
+
+  &.-position\:bottom {
+    bottom: var(--b-space-m);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.-position\:bottom-left {
+    bottom: var(--b-space-m);
+    left: var(--b-space-m);
+    right: auto;
+  }
+
+  &.-position\:top-left {
+    left: var(--b-space-m);
+    right: auto;
+    top: var(--b-space-m);
+  }
+
+  @include mq($until: m) {
+    bottom: var(--b-space-m) !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    transform: none !important;
+
+    .b-Toast-main {
+      margin: 0 auto;
+    }
+  }
+}

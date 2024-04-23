@@ -1,0 +1,7 @@
+@forward 'stylesheets/Tabs';
+@forward 'stylesheets/TabsList';
+@forward 'stylesheets/TabsList--default';
+@forward 'stylesheets/TabsList--primary';
+@forward 'stylesheets/TabContent';
+
+@use '../ScrollArea';

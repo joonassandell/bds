@@ -1,0 +1,384 @@
+@use 'sass:math';
+@use '../config' as *;
+@use '../mixins' as *;
+@use '../../components/Button';
+
+/**
+ * Override Cookiebot "Swift" Banner template style to match Biocode brand.
+ * Banner template or its settings _should never be changed_.
+ * https://manage.cookiebot.com/en/manage
+ *
+ * These CookieBot theme ids/classes are amazingly well structured, NOT!
+ *
+ * - #CybotCookiebotDialog.CybotEdge = "Show details" not open
+ */
+#CybotCookiebotDialog {
+  --dialog-gap: var(--b-space-s) !important;
+  --padding-y: var(--b-space-s);
+  --padding-y-s: var(--b-space-xs);
+  --padding-x: var(--b-space-s);
+  --padding-scrollContainer: var(--b-space-3xs);
+  background-color: var(--b-surface-0) !important;
+  border-radius: var(--b-border-radius-l) !important;
+  box-shadow: var(--b-shadow) !important;
+  color: var(--b-text) !important;
+  font-family: inherit !important;
+  font-size: var(--b-font-size) !important;
+  inset: auto var(--dialog-gap) var(--dialog-gap) var(--dialog-gap) !important;
+  letter-spacing: unset !important;
+  line-height: var(--b-line-height);
+  max-height: calc(100% - (var(--dialog-gap) * 2)) !important;
+  min-width: var(--b-root-min-width) !important;
+  padding: 0 !important;
+  transform: none !important;
+  width: calc(100% - (var(--dialog-gap) * 2)) !important;
+  z-index: var(--b-z-index-600) !important;
+
+  > div:not(.CybotCookiebotDialogContentWrapper) {
+    display: none;
+  }
+
+  * {
+    font-size: inherit !important;
+    letter-spacing: unset !important;
+    line-height: inherit !important;
+
+    h2 {
+      color: var(--b-text-200) !important;
+      font-size: inherit !important;
+      font-weight: var(--b-font-weight-heading) !important;
+      margin-bottom: var(--b-space-m) !important;
+    }
+  }
+
+  #CybotCookiebotDialogBodyContentTitle {
+    font-weight: var(--b-font-weight-strong) !important;
+    margin-bottom: var(--b-space-2xs) !important;
+  }
+
+  a:not([class]):not([id]),
+  .CybotCookiebotDialogDetailBodyContentCookieLink {
+    color: var(--b-primary-highlight) !important;
+    font-weight: var(--b-font-weight-medium) !important;
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieLink {
+    img {
+      display: none !important;
+    }
+  }
+
+  .CybotCookiebotScrollContainer {
+    border-bottom: var(--border-width-s) solid var(--b-surface-1-border) !important;
+    border-bottom: 0 !important;
+    max-height: calc(50vh - var(--dialog-gap)) !important;
+    padding: var(--padding-scrollContainer) !important;
+
+    > div:first-of-type {
+      scrollbar-color: transparent transparent !important;
+
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent !important;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: transparent !important;
+      }
+
+      &:hover {
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--b-scrollbar-color) !important;
+          scrollbar-color: var(--b-scrollbar-color) transparent !important;
+        }
+      }
+    }
+  }
+
+  &.CybotEdge {
+    .CybotCookiebotDialogContentWrapper {
+      flex-direction: column !important;
+      max-width: unset !important;
+    }
+
+    .CybotCookiebotDialogBodyBottomWrapper {
+      margin-top: 0 !important;
+    }
+
+    #CybotCookiebotDialogBodyButtons {
+      max-width: unset !important;
+    }
+  }
+
+  .CybotCookiebotFader {
+    background-image: linear-gradient(
+      to top,
+      var(--b-surface-0) 5%,
+      var(--b-bg-transparent)
+    ) !important;
+    height: var(--b-space-4xl) !important;
+    width: calc(
+      100% - (var(--padding-x) - var(--padding-scrollContainer))
+    ) !important;
+  }
+}
+
+#CybotCookiebotDialogHeader,
+#CybotCookiebotDialogPoweredByText {
+  display: none !important;
+}
+
+#CybotCookiebotDialogBodyContent {
+  padding: var(--padding-y-s)
+    calc(var(--padding-x) - var(--padding-scrollContainer)) var(--padding-y)
+    calc(var(--padding-x) - var(--padding-scrollContainer)) !important;
+}
+
+#CybotCookiebotDialogBodyEdgeMoreDetails {
+  bottom: calc(var(--padding-y) + var(--b-space-2xs));
+  height: auto !important;
+  left: 0;
+  margin: 0 0 0 var(--padding-x) !important;
+  position: absolute;
+  z-index: 1;
+}
+
+#CybotCookiebotDialogBodyEdgeMoreDetailsLink {
+  color: var(--b-text-50) !important;
+  font-size: var(--b-font-size-s) !important;
+  font-weight: var(--b-font-weight-500) !important;
+  line-height: var(--b-line-height-s) !important;
+
+  &:after {
+    display: none !important;
+  }
+}
+
+#CybotCookiebotDialogFooter {
+  padding: 0 var(--padding-x) var(--padding-y) var(--padding-x) !important;
+  width: 100% !important;
+
+  #CybotCookiebotDialogBodyButtonsWrapper {
+    flex-direction: row !important;
+    gap: var(--b-space-s) !important;
+    justify-content: flex-end !important;
+  }
+
+  .CybotCookiebotDialogBodyButton {
+    border-radius: var(--b-border-radius) !important;
+    font-size: var(--b-font-size-s) !important;
+    font-weight: var(--b-font-weight-500) !important;
+    line-height: var(--b-line-height-s) !important;
+    margin: 0 !important;
+    min-height: var(--b-space-l) !important;
+    padding: 0 var(--b-space-s) !important;
+    width: unset !important;
+
+    &:hover {
+      opacity: 1 !important;
+    }
+  }
+
+  #CybotCookiebotDialogBodyButtonDecline {
+    border: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+    color: var(--b-text-200) !important;
+  }
+
+  #CybotCookiebotDialogBodyButtonAccept {
+    background-color: var(--b-surface-3) !important;
+    border: 0 !important;
+    box-shadow: var(--b-shadow) !important;
+    color: var(--b-text-200) !important;
+  }
+}
+
+#CybotCookiebotDialogDetailBodyContentCookieContainerTypes,
+#CybotCookiebotDialogDetailFooter {
+  padding: var(--padding-y) var(--padding-x) !important;
+}
+
+#CybotCookiebotDialogDetailFooter {
+  display: none !important;
+}
+
+#CybotCookiebotDialogDetailBodyContentCookieContainerTypes {
+  .CybotCookiebotDialogDetailBodyContentCookieInfo,
+  .CybotCookiebotDialogDetailBodyEmptyCategoryMessage {
+    border: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieProvider {
+    font-weight: var(--b-font-weight-strong) !important;
+
+    &:after {
+      right: var(--b-space-xs) !important;
+      top: var(--b-space-2xs) !important;
+    }
+
+    &:not(.CybotCookiebotDialogDetailBodyContentCookieInfoCount) {
+      color: var(--b-text) !important;
+    }
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieTypeTableContainer {
+    margin-left: 0 !important;
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieInfo,
+  .CybotCookiebotDialogDetailBodyEmptyCategoryMessage {
+    background-color: var(--b-bg-100) !important;
+    border-radius: var(--b-border-radius-l) !important;
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieInfo {
+    &.CybotCookiebotDialogShow:first-of-type {
+      &:before {
+        border-top: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+      }
+    }
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieInfoFooter {
+    border-top: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+  }
+
+  .CybotCookiebotDialogDetailBodyContentCookieGroup {
+    background-color: var(--b-bg-100) !important;
+    border: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+    border-radius: var(--b-border-radius-l) !important;
+    padding: var(--b-space) !important;
+  }
+}
+
+#CybotCookiebotDialogNav {
+  border-bottom: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+  border-bottom: 0 !important;
+
+  .CybotCookiebotDialogNavItems {
+    margin-bottom: var(--b-space);
+  }
+
+  .CybotCookiebotDialogNavItemLink {
+    border-bottom: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+    color: var(--b-text) !important;
+    font-weight: var(--b-font-weight-strong) !important;
+
+    &.CybotCookiebotDialogActive {
+      border-bottom: var(--b-border-width-s) solid var(--b-primary) !important;
+      color: var(--b-primary-highlight) !important;
+    }
+  }
+}
+
+#CybotCookiebotDialog {
+  .CookieCard {
+    border-bottom: var(--b-border-width-s) solid var(--b-border-mute-100) !important;
+
+    &:first-child {
+      padding-top: 0 !important;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0 !important;
+    }
+
+    .CybotCookiebotDialogDetailBodyContentCookieTypeIntro {
+      padding-left: 0 !important;
+    }
+
+    .CybotCookiebotDialogDetailBodyContentCookieContainerButton {
+      border: 0 !important;
+      color: var(--b-text) !important;
+      font-weight: var(--b-font-weight-strong) !important;
+      padding: 0 var(--b-space-xs) !important;
+
+      &:before {
+        margin-right: var(--b-space) !important;
+      }
+    }
+  }
+}
+
+#CybotCookiebotDialogTabContent {
+  margin-left: 0 !important;
+
+  .CybotCookiebotDialogDetailBulkConsentCount {
+    background: var(--b-bg-500) !important;
+    font-size: var(--b-font-size-xs) !important;
+    font-weight: var(--b-font-weight-strong) !important;
+    line-height: 1 !important;
+    padding: var(--b-space-2xs) var(--b-space-xs) !important;
+  }
+}
+
+#CybotCookiebotDialogDetailBodyContentTextAbout {
+  padding: 0 calc(var(--padding-x) - var(--padding-scrollContainer))
+    var(--padding-y) calc(var(--padding-x) - var(--padding-scrollContainer)) !important;
+}
+
+// Wtf
+#CybotCookiebotDialog
+  .CybotCookiebotDialogBodyLevelButtonIABContainerToggleHide,
+#CybotCookiebotDialog
+  .CybotCookiebotDialogBodyLevelButtonIABContainerToggleShow,
+#CybotCookiebotDialog a:after,
+#CybotCookiebotDialog a:before,
+#CybotCookiebotDialog button:after,
+#CybotCookiebotDialog button:before {
+  border-color: var(--b-text-50) !important;
+}
+
+@include mq($until: s) {
+  #CybotCookiebotDialog {
+    &.CybotEdge {
+      .CybotCookiebotScrollContainer {
+        min-height: unset !important;
+      }
+
+      #CybotCookiebotDialogBodyContent {
+        padding-bottom: var(--padding-y-s) !important;
+      }
+
+      #CybotCookiebotDialogBodyContentTitle {
+        font-weight: var(--b-font-weight) !important;
+        margin-bottom: 0 !important;
+      }
+
+      #CybotCookiebotDialogBodyContentText,
+      .CybotCookiebotFader {
+        display: none;
+      }
+    }
+  }
+}
+
+@include mq(s) {
+  #CybotCookiebotDialog {
+    --padding-y: var(--b-space);
+    --padding-y-s: var(--b-space-s);
+    --padding-x: var(--b-space);
+    max-width: calc(100vw - var(--dialog-gap)) !important;
+
+    &.CybotEdge {
+      max-width: calc(var(--b-space) * 22) !important;
+
+      .CybotCookiebotScrollContainer {
+        max-height: calc(var(--b-space) * 9) !important;
+        min-height: calc(var(--b-space) * 9) !important;
+      }
+    }
+  }
+}
+
+@include mq(l) {
+  #CybotCookiebotDialog {
+    max-width: calc(50vw - var(--dialog-gap)) !important;
+
+    &.CybotEdge {
+      max-width: calc(var(--b-space) * 30) !important;
+    }
+  }
+
+  #CybotCookiebotDialogFooter {
+    padding-top: var(--padding-y-s) !important;
+  }
+}

@@ -1,0 +1,24 @@
+@use '../config' as *;
+
+// Completely remove from the flow but leave available to screen readers
+@mixin hideVisually($important: null) {
+  $important: if($important, !important, null);
+  border: 0 $important;
+  clip: rect(1px, 1px, 1px, 1px) $important;
+  height: 1px $important;
+  overflow: hidden $important;
+  padding: 0 $important;
+  position: absolute $important;
+  width: 1px $important;
+}
+
+@mixin showFocusVisible($important: null, $focusSelector: ':focus-visible') {
+  $important: if($important, !important, null);
+  opacity: 0;
+  transition: opacity var(--b-trans-duration) var(--b-ease-in-out);
+  will-change: opacity;
+
+  &#{$focusSelector} {
+    opacity: 1;
+  }
+}

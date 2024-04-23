@@ -1,0 +1,290 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Select {
+  width: 100%;
+}
+
+.b-Select-heading {
+  align-items: flex-end;
+  display: flex;
+  gap: var(--b-space-s);
+  justify-content: space-between;
+  padding: 0 var(--b-space-s) var(--b-space-xs) var(--b-space-s);
+}
+
+.b-Select-label-suffix {
+  color: var(--b-text-50);
+}
+
+.b-Select-label-beacon {
+  display: inline-block;
+  margin-bottom: var(--b-space-3xs);
+  margin-left: var(--b-space-xs);
+  vertical-align: middle;
+}
+
+.b-Select-help {
+  color: var(--b-text-50);
+  line-height: 0;
+  margin-right: var(--b-space-3xs);
+}
+
+.b-Select-hint {
+  @include text(s);
+  color: var(--b-text-50);
+  padding: var(--b-space-xs) var(--b-space-s) 0 var(--b-space-s);
+}
+
+/* ======
+ * Override and extend react-select styles
+ * ======
+ *
+ * The .b-Select-container and other class extenders need to be here in order
+ * to get higher specifity for the custom styles vs the injected styles
+ */
+.b-Select-container {
+  .b-Select__control {
+    background-color: var(--b-surface-1);
+    border: none;
+    border-radius: var(--b-border-radius);
+    box-shadow: var(--b-shadow);
+    min-height: var(--b-space-xl);
+    transition:
+      background-color var(--b-trans-duration),
+      border-color var(--b-trans-duration);
+    transition-timing-function: var(--b-ease-in-out);
+
+    &:hover:not(.b-Select__control--is-disabled):not(
+        .b-Select__control--is-focused
+      ) {
+      background-color: var(--b-surface-1-hover);
+      cursor: pointer;
+    }
+
+    &.b-Select__control--is-focused {
+      outline: var(--b-border-width) solid var(--b-primary) !important;
+      outline-offset: var(--b-border-width);
+    }
+
+    // Possible hack if needed to make the select somewhat behave like
+    // with :focus-visible
+    // &.b-Select__control--is-focused:not(.b-Select__control--menu-is-open) {
+    //   outline: var(--b-border-width) solid var(--b-primary) !important;
+    //   outline-offset: var(--b-border-width);
+    // }
+  }
+
+  .b-Select__control--is-disabled {
+    --b-Icon-color: var(--b-text-50);
+    background-color: var(--b-surface-3-disabled);
+    opacity: var(--b-surface-opacity-disabled);
+  }
+
+  .b-Select__value-container {
+    align-items: center;
+    display: grid;
+    flex: 1;
+    overflow: hidden;
+    padding: var(--b-space-2xs) 0 var(--b-space-2xs) var(--b-space-s);
+    position: relative;
+  }
+
+  .b-Select__value-container--is-multi.b-Select__value-container--has-value {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &:has(.b-Select__placeholder-icon) {
+    .b-Select__value-container {
+      padding-left: calc(
+        var(--b-Icon-size-xs) + var(--b-space-s) + var(--b-space-2xs)
+      );
+    }
+  }
+
+  .b-Select__input-container,
+  .b-Select__placeholder,
+  .b-Select__single-value {
+    margin: 0 0 0 var(--b-space-3xs);
+  }
+
+  .b-Select__input-container {
+    color: var(--b-text-200);
+    padding: 0;
+  }
+
+  .b-Select__placeholder {
+    @include textTruncate(95%);
+    color: var(--b-text-50);
+    transition: color var(--b-trans-duration) var(--b-ease-in-out);
+  }
+
+  .b-Select__single-value {
+    color: var(--b-text-200);
+  }
+
+  .b-Select__single-value--is-disabled {
+    color: var(--b-text-50);
+  }
+
+  .b-Select__indicator {
+    color: var(--b-text-50);
+    display: flex;
+    padding-right: var(--b-space-s);
+
+    &:hover {
+      color: var(--b-text);
+    }
+  }
+
+  .b-Select__clear-indicator {
+    &:first-child:not(:only-child) {
+      padding-right: var(--b-space-2xs);
+    }
+  }
+
+  .b-Select__multi-value {
+    background-color: var(--b-bg-400);
+    border: var(--b-border-width-s) solid var(--b-border-500);
+    border-radius: var(--b-border-radius);
+    left: calc((var(--b-space-xs) - var(--b-space-3xs)) * -1);
+    margin: var(--b-space-3xs);
+    position: relative;
+
+    .b-Select__multi-value__remove {
+      border-radius: 0;
+      color: var(--b-text-200);
+      transition:
+        background-color var(--b-trans-duration),
+        color var(--b-trans-duration);
+      transition-timing-function: var(--b-ease-in-out);
+
+      &:hover {
+        background-color: var(--b-bg-600);
+      }
+    }
+  }
+
+  .b-Select__placeholder-icon {
+    align-items: center;
+    display: flex;
+    grid-area: 1/1/2/3;
+    margin-left: calc((var(--b-Icon-size-xs) + var(--b-space-2xs)) * -1);
+    margin-right: var(--b-space-xs); // Gap for multi select items
+    width: var(--b-Icon-size-xs);
+  }
+
+  .b-Select__placeholder-icon ~ .b-Select__multi-value {
+    left: 0;
+  }
+
+  .b-Select__multi-value__label {
+    @include text(s);
+    color: var(--b-text-200);
+    padding: var(--b-space-3xs) var(--b-space-2xs) var(--b-space-3xs)
+      var(--b-space-xs);
+  }
+}
+
+.b-Select-option.b-Select__option {
+  @include text(s);
+  border-radius: var(--b-border-radius);
+  margin-bottom: var(--b-space-4xs);
+  padding: var(--b-space-2xs) var(--b-space-xs);
+  transition:
+    background-color var(--b-trans-duration),
+    color var(--b-trans-duration);
+  transition-timing-function: var(--b-ease-in-out);
+
+  &:hover:not(.b-Select__option--is-disabled, .b-Select__option--is-selected),
+  &.b-Select__option--is-focused {
+    background-color: var(--b-surface-3-hover);
+    color: var(--b-text-200);
+    cursor: pointer;
+  }
+
+  &.b-Select__option--is-selected {
+    background-color: var(--b-surface-3-active);
+    color: var(--b-text-200);
+  }
+
+  &.b-Select__option--is-disabled {
+    color: var(--b-text-50);
+  }
+}
+
+.b-Select-groupHeading.b-Select__group-heading {
+  @include text($style: subtitle);
+  color: var(--b-text-50);
+  margin-bottom: var(--b-space-4xs);
+  padding: 0 var(--b-space-xs);
+}
+
+.b-Select-menu.b-Select__menu {
+  background-color: var(--b-surface-1);
+  border-radius: var(--b-border-radius);
+  box-shadow: var(--b-shadow);
+  color: var(--b-text-200);
+  margin: var(--b-space-xs) 0;
+  transition: var(--b-trans-duration) box-shadow var(--b-ease-in-out);
+  // z-index: var(--b-z-index-500);
+
+  .b-Select__menu-list {
+    padding: var(--b-space-xs) var(--b-space-xs);
+  }
+
+  .b-Select__menu-notice {
+    color: var(--b-text-50);
+    padding: var(--b-space-2xs) 0;
+  }
+
+  .b-Select__group {
+    padding: var(--b-space-xs) 0;
+  }
+
+  &.is-animate {
+    animation: b-fadeIn var(--b-trans-duration) var(--b-ease-in-out);
+  }
+
+  &.is-animate.is-fadeOut {
+    animation: b-fadeOut var(--b-trans-duration) var(--b-ease-in-out);
+    opacity: 0;
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Select {
+  &.-placeholder\:color\:strong {
+    .b-Select__indicator,
+    .b-Select__placeholder {
+      color: var(--b-text-200);
+    }
+  }
+}
+
+.b-Select--outline {
+  .b-Select__control {
+    border: var(--b-border-width) solid var(--b-surface-1-border);
+    box-shadow: unset;
+
+    &.b-Select__control--is-focused {
+      background-color: var(--b-surface-1-focus);
+      border-color: var(--b-surface-1-border-focus);
+      outline: 0 !important;
+    }
+
+    &.b-Select__control--is-disabled {
+      border-color: var(--b-surface-1-border-disabled);
+    }
+
+    &:hover:not(.b-Select__control--is-disabled):not(
+        .b-Select__control--is-focused
+      ) {
+      background-color: var(--b-surface-1-hover);
+      border-color: var(--b-surface-1-border-hover);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Mark {
+  display: inline-flex;
+  vertical-align: middle;
+
+  svg {
+    aspect-ratio: 1;
+    height: 100%;
+    width: 100%;
+  }
+
+  &.-size\:m {
+    width: var(--b-Mark-size-m);
+  }
+
+  &.-size\:s {
+    width: var(--b-Mark-size-s);
+  }
+}

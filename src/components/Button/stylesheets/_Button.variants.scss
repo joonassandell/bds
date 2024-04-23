@@ -1,0 +1,76 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Button {
+  &.is-disabled,
+  &.is-loading {
+    pointer-events: none;
+  }
+
+  &.-size\:s {
+    font-size: var(--b-font-size-s);
+    line-height: var(--b-line-height-s);
+    min-height: var(--b-space-l);
+    padding: var(--b-space-2xs) var(--b-space-s);
+
+    .b-Button-figure {
+      width: var(--b-space-ms);
+    }
+
+    &.-text\:subtitle {
+      @include text($style: subtitle);
+    }
+  }
+
+  &.-size\:xs {
+    border-width: var(--b-border-width-s);
+    box-sizing: border-box;
+    font-size: var(--b-font-size-xs);
+    line-height: var(--b-line-height-xs);
+    min-height: var(--b-space-m);
+    padding: var(--b-space-3xs) var(--b-space-xs);
+
+    .b-Button-figure {
+      margin: 0 calc(var(--b-space-3xs) * -1) 0 calc(var(--b-space-3xs) * -1);
+      width: var(--b-space);
+    }
+
+    &.-text\:subtitle {
+      @include text($style: subtitle);
+    }
+  }
+
+  &.-justify\:block {
+    height: var(--b-space-xl);
+    padding: 0;
+    width: var(--b-space-xl);
+
+    &.-size\:s {
+      height: var(--b-space-l);
+      width: var(--b-space-l);
+    }
+
+    &.-size\:xs {
+      height: var(--b-space-m);
+      width: var(--b-space-m);
+    }
+  }
+
+  &.-justify\:stretch {
+    flex: 1;
+    width: 100%;
+  }
+
+  &.-justify\:stretch\:between {
+    .b-Button-item {
+      width: 100%;
+    }
+
+    .b-Button-text {
+      margin-right: auto;
+    }
+  }
+
+  &.-text\:subtitle {
+    @include text($style: subtitle-l);
+  }
+}

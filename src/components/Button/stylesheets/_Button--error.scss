@@ -1,0 +1,25 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Button--error {
+  border: var(--b-border-width) solid var(--b-error-border);
+  color: var(--b-error-fg);
+
+  &,
+  .b-Button-loader {
+    background-color: var(--b-error-bg);
+  }
+
+  @include hoverFocusVisible($focusVisibleProgrammatic: false) {
+    opacity: var(--b-opacity-subtle);
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Button--error {
+  &.is-disabled {
+    opacity: var(--b-opacity-disabled);
+  }
+}

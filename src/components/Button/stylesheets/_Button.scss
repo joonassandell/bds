@@ -1,0 +1,71 @@
+.b-Button {
+  align-items: center;
+  background-color: transparent;
+  border-radius: var(--b-border-radius);
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: var(--b-font-size);
+  font-weight: var(--b-font-weight-500);
+  justify-content: center;
+  line-height: var(--b-line-height);
+  max-width: 100%;
+  min-height: var(--b-space-xl);
+  padding: var(--b-space-2xs) var(--b-space);
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    background-color var(--b-trans-duration),
+    border-color var(--b-trans-duration),
+    box-shadow var(--b-trans-duration),
+    opacity var(--b-trans-duration),
+    color var(--b-trans-duration);
+  transition-timing-function: var(--b-ease-in-out);
+  z-index: 0;
+
+  &:active {
+    top: var(--b-space-4xs);
+  }
+}
+
+.b-Button-item {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--b-space-xs);
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.b-Button-text {
+  pointer-events: none;
+}
+
+.b-Button-figure {
+  display: flex;
+  flex-shrink: 0;
+  margin: 0 0 0 calc(var(--b-space-2xs) * -1);
+  width: var(--b-space-ml);
+}
+
+.b-Button-figure-image {
+  border-radius: var(--b-border-radius-pill);
+}
+
+.b-Button-icon {
+  display: flex;
+  margin: 0 calc(var(--b-space-2xs) * -1);
+  pointer-events: none;
+}
+
+.b-Button-loader {
+  border-radius: var(--b-border-radius);
+  display: grid;
+  inset: 0;
+  overflow: hidden;
+  place-items: center;
+  position: absolute;
+  z-index: 1;
+}

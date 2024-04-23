@@ -1,0 +1,65 @@
+@use '../config' as *;
+@use '../mixins' as *;
+
+@mixin createClass($helper: null, $prop: null, $breakpoint: null) {
+  $bp: if($breakpoint, \@#{$breakpoint}, null);
+  .b-#{$helper}\:s#{$bp} {
+    #{$prop}: var(--b-space-s) !important;
+  }
+
+  .b-#{$helper}\:0#{$bp} {
+    #{$prop}: 0 !important;
+  }
+
+  .b-#{$helper}#{$bp} {
+    #{$prop}: var(--b-space) !important;
+  }
+
+  .b-#{$helper}\:m#{$bp} {
+    #{$prop}: var(--b-space-m) !important;
+  }
+
+  .b-#{$helper}\:l#{$bp} {
+    #{$prop}: var(--b-space-l) !important;
+  }
+
+  .b-#{$helper}\:xl#{$bp} {
+    #{$prop}: var(--b-space-xl) !important;
+  }
+
+  .b-#{$helper}\:2xl#{$bp} {
+    #{$prop}: var(--b-space-2xl) !important;
+  }
+
+  .b-#{$helper}\:4xl#{$bp} {
+    #{$prop}: var(--b-space-4xl) !important;
+  }
+}
+
+@mixin spaceHelper($helper: null, $prop: null) {
+  @include createClass($helper, $prop);
+
+  @each $bp, $value in $helper-breakpoints {
+    @include mq($bp) {
+      @include createClass($helper, $prop, $bp);
+    }
+  }
+}
+
+/**
+ * Margin
+ */
+@include spaceHelper('m', 'margin');
+@include spaceHelper('mt', 'margin-top');
+@include spaceHelper('mr', 'margin-right');
+@include spaceHelper('mb', 'margin-bottom');
+@include spaceHelper('ml', 'margin-left');
+
+/**
+ * Padding
+ */
+@include spaceHelper('p', 'padding');
+@include spaceHelper('pt', 'padding-top');
+@include spaceHelper('pr', 'padding-right');
+@include spaceHelper('pb', 'padding-bottom');
+@include spaceHelper('pl', 'padding-left');

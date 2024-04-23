@@ -1,0 +1,11 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Heading-heading {
+  color: var(--b-Heading-color, var(--b-text-heading));
+  overflow-wrap: break-word;
+
+  a {
+    @include text($style: textLink);
+    color: var(--b-Heading-color, var(--b-text-heading));
+  }
+}

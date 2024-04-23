@@ -1,0 +1,12 @@
+.b-Loader {
+  display: inline-flex;
+}
+
+.b-Loader--fullscreen {
+  background-color: var(--b-surface-0);
+  display: grid;
+  inset: 0;
+  place-items: center;
+  position: fixed;
+  // z-index: var(--b-z-index-900);
+}

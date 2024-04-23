@@ -1,0 +1,21 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Fieldset {
+  background: var(--b-surface-2);
+  border: var(--b-border-width) solid var(--b-surface-2-border);
+  border-radius: var(--b-border-radius-l);
+  margin: 0;
+  padding: var(--b-space-m);
+}
+
+.b-Fieldset-legend {
+  @include text($style: subtitle);
+  align-items: center;
+  background-color: var(--b-surface-2);
+  border: var(--b-border-width) solid var(--b-surface-2-border);
+  border-radius: var(--b-border-radius);
+  color: var(--b-text-200);
+  display: inline-flex;
+  gap: var(--b-space-2xs);
+  padding: var(--b-space-4xs) var(--b-space-xs);
+}

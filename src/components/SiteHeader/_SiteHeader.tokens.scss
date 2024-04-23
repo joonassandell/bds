@@ -1,0 +1,75 @@
+@use '../../stylesheets/config';
+@use '../../stylesheets/mixins' as *;
+
+@include add-breakpoint(SiteHeader-xxs, 360px);
+@include add-breakpoint(SiteHeader-s, 600px);
+@include add-breakpoint(SiteHeader-m, 768px);
+@include add-breakpoint(SiteHeader-sideWidthActive, 900px);
+@include add-breakpoint(SiteHeader-l, 1024px);
+@include add-breakpoint(SiteHeader-xl, 1140px);
+@include add-breakpoint(SiteHeader-xxl, 1272px);
+@include add-breakpoint(SiteHeader-xxxl, 1440px);
+@include add-breakpoint(SiteHeader-xxxxl, 1584px);
+
+:root {
+  --b-SiteHeader-height: var(--b-space-4xl);
+  --b-SiteHeader-wrap-max-width: var(--b-Wrap-max-width);
+  --b-SiteHeader-side-space-left: var(--b-Wrap-space-left-xs);
+  --b-SiteHeader-side-space-right: var(--b-Wrap-space-right-xs);
+  --b-SiteHeader-main-space-left: var(--b-Wrap-space-left-xs);
+  --b-SiteHeader-main-space-right: var(--b-Wrap-space-right-xs);
+
+  @include mq(SiteHeader-s) {
+    --b-SiteHeader-height: var(--b-space-5xl);
+  }
+
+  @include mq(SiteHeader-xxs) {
+    --b-SiteHeader-side-space-left: var(--b-Wrap-space-left-s);
+    --b-SiteHeader-side-space-right: var(--b-Wrap-space-right-s);
+    --b-SiteHeader-main-space-left: var(--b-Wrap-space-left-s);
+    --b-SiteHeader-main-space-right: var(--b-Wrap-space-right-s);
+  }
+
+  @include mq(SiteHeader-m) {
+    --b-SiteHeader-side-space-left: var(--b-Wrap-space-left-m);
+    --b-SiteHeader-main-space-right: var(--b-Wrap-space-right-m);
+  }
+
+  @include mq(SiteHeader-sideWidthActive) {
+    --b-SiteHeader-side-space-right: var(--b-space);
+    --b-SiteHeader-side-width: calc(
+      120px + var(--b-SiteHeader-side-space-left) +
+        var(--b-SiteHeader-side-space-right)
+    );
+    --b-SiteHeader-main-space-left: var(--b-space);
+  }
+
+  @include mq(SiteHeader-l) {
+    --b-SiteHeader-side-space-left: var(--b-Wrap-space-left-l);
+    --b-SiteHeader-side-space-right: var(--b-space-l);
+    --b-SiteHeader-side-width: calc(
+      136px + var(--b-SiteHeader-side-space-left) +
+        var(--b-SiteHeader-side-space-right)
+    );
+    --b-SiteHeader-main-space-left: var(--b-space-xl);
+    --b-SiteHeader-main-space-right: var(--b-Wrap-space-right-l);
+  }
+
+  @include mq(SiteHeader-xxl) {
+    --b-SiteHeader-side-space-left: var(--b-Wrap-space-left-2xl);
+    --b-SiteHeader-side-width: calc(
+      160px + var(--b-SiteHeader-side-space-left) +
+        var(--b-SiteHeader-side-space-right)
+    );
+    --b-SiteHeader-main-space-left: var(--b-space-4xl);
+    --b-SiteHeader-main-space-right: var(--b-Wrap-space-right-2xl);
+  }
+
+  @include mq(SiteHeader-xxxl) {
+    --b-SiteHeader-side-width: calc(
+      176px + var(--b-SiteHeader-side-space-left) +
+        var(--b-SiteHeader-side-space-right)
+    );
+    --b-SiteHeader-side-space-right: var(--b-space-xl);
+  }
+}

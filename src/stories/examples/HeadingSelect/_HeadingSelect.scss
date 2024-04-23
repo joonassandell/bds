@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use '../../../stylesheets/mixins' as *;
+
+// Utilize media queries as container queries
+$s: map.get($breakpoints, 's');
+$m: map.get($breakpoints, 'm');
+
+.b-HeadingSelect {
+  container-type: inline-size;
+}
+
+.b-HeadingSelect-label {
+  cursor: pointer;
+  margin-top: calc(var(--b-space-2xs) + var(--b-space-4xs));
+
+  @container (min-width: #{$s}) {
+    max-width: 55%;
+  }
+
+  @include mq(m) {
+    margin-top: calc(var(--b-space-3xs) + var(--b-space-4xs));
+  }
+}
+
+.b-HeadingSelect-separator[data-orientation='horizontal'] {
+  flex: 1;
+  margin-top: var(--b-space);
+
+  @include mq(s) {
+    min-width: var(--b-space);
+  }
+}
+
+.b-HeadingSelect-digit-s {
+  margin: var(--b-space-2xs) 0 0 calc(var(--b-space-xl) + var(--b-space-2xs));
+
+  @container (min-width: #{$m}) {
+    display: none;
+  }
+}
+
+.b-HeadingSelect-digit-l {
+  @container (max-width: #{$m - 1px}) {
+    display: none;
+  }
+}
+
+.b-HeadingSelect-buttons {
+  margin-left: auto;
+
+  @container (max-width: #{$s - 1px}) {
+    margin-top: var(--b-space-2xs);
+  }
+}
+
+.b-HeadingSelect-buttons-s {
+  @container (min-width: #{$s}) {
+    display: none;
+  }
+}
+
+.b-HeadingSelect-buttons-l {
+  @container (max-width: #{$s - 1px}) {
+    display: none;
+  }
+}

@@ -1,0 +1,81 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Illustration {
+  --b-Illustration-spot: var(--b-static-white);
+  --b-Illustration-border: var(--b-static-black);
+  display: inline-flex;
+  vertical-align: middle;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  @include theme('dark') {
+    --b-Illustration-spot: transparent;
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Illustration {
+  &.-color\:accent\:1 {
+    --b-Illustration-bg: var(--b-accent-1-100);
+
+    @include theme('dark') {
+      --b-Illustration-bg: hsl(var(--b-accent-1-900-hsl) / 0.7);
+      --b-Illustration-border: var(--b-accent-1-400);
+      opacity: 0.6;
+    }
+  }
+
+  &.-color\:accent\:2 {
+    --b-Illustration-bg: var(--b-accent-2-100);
+
+    @include theme('dark') {
+      --b-Illustration-bg: var(--b-accent-2-900);
+      --b-Illustration-border: var(--b-accent-2);
+      opacity: 0.7;
+    }
+  }
+
+  &.-color\:accent\:3 {
+    --b-Illustration-bg: var(--b-accent-3-100);
+
+    @include theme('dark') {
+      --b-Illustration-bg: var(--b-accent-3-900);
+      --b-Illustration-border: var(--b-accent-3);
+      opacity: 0.5;
+    }
+  }
+
+  &.-color\:accent\:4 {
+    --b-Illustration-bg: var(--b-accent-4-100);
+
+    @include theme('dark') {
+      --b-Illustration-bg: hsl(var(--b-accent-4-900-hsl) / 0.5);
+      --b-Illustration-border: var(--b-accent-4-300);
+      opacity: 0.7;
+    }
+  }
+
+  &.-color\:accent\:5 {
+    --b-Illustration-bg: var(--b-accent-5-100);
+
+    @include theme('dark') {
+      --b-Illustration-bg: var(--b-accent-5-900);
+      --b-Illustration-border: var(--b-accent-5-300);
+      opacity: 0.7;
+    }
+  }
+
+  &.-outline {
+    --b-Illustration-spot: transparent;
+
+    @include theme('dark') {
+      --b-Illustration-bg: transparent;
+    }
+  }
+}

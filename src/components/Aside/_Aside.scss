@@ -1,0 +1,126 @@
+.b-Aside {
+  background-color: var(--b-surface-0);
+  inset: 0;
+  position: fixed;
+  width: var(--b-Aside-width);
+  // z-index: var(--b-z-index-700);
+}
+
+.b-Aside-inner {
+  height: 100%;
+  position: relative;
+
+  > .b-ScrollArea {
+    height: 100%;
+    z-index: 0;
+
+    > .b-ScrollArea-viewport {
+      height: 100%;
+
+      // Fixes content from overflowing
+      > div {
+        display: block !important;
+      }
+    }
+
+    > .b-ScrollArea-scrollbar {
+      overflow: hidden;
+    }
+  }
+}
+
+.b-Aside-main {
+  padding-bottom: var(--b-space-4xl);
+}
+
+.b-Aside-box {
+  margin: var(--b-space);
+}
+
+.b-Aside-close {
+  position: absolute;
+  right: calc(var(--b-space-m) * -0.5);
+  top: var(--b-space);
+  z-index: 1;
+
+  &.-align\:inside {
+    right: var(--b-space);
+  }
+
+  .b-Aside.-align\:right & {
+    left: calc(var(--b-space-m) * -0.5);
+    right: unset;
+
+    &.-align\:inside {
+      left: unset;
+      right: var(--b-space);
+    }
+  }
+}
+
+.b-Aside-avatar {
+  position: absolute;
+  right: calc(var(--b-space-xl) * -0.5);
+  top: var(--b-space-s);
+  z-index: 2;
+
+  .b-Aside.-align\:right & {
+    left: calc(var(--b-space-xl) * -0.5);
+    right: unset;
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Aside {
+  .b-StackedNav {
+    padding: 0 var(--b-space);
+  }
+}
+
+.b-Aside--layout {
+  box-shadow: var(--b-border-width-s) 0 var(--b-surface-0-border);
+
+  > .b-Aside-inner > .b-ScrollArea > .b-ScrollArea-viewport {
+    margin-right: calc(var(--b-space) * -1);
+    padding-right: var(--b-space);
+  }
+
+  &.-align\:right {
+    box-shadow: calc(var(--b-border-width-s) * -1) 0 var(--b-surface-0-border);
+    left: auto;
+
+    > .b-Aside-inner > .b-ScrollArea > .b-ScrollArea-viewport {
+      margin-left: calc(var(--b-space) * -1);
+      margin-right: 0;
+      padding-left: var(--b-space);
+      padding-right: 0;
+    }
+  }
+
+  &:has(.b-Aside-avatar) {
+    box-shadow: var(--b-border-width-s) var(--b-space-s)
+      var(--b-surface-0-border);
+
+    &.-align\:right {
+      box-shadow: calc(var(--b-border-width-s) * -1) var(--b-space)
+        var(--b-surface-0-border);
+    }
+  }
+}
+
+.b-Aside--drawer {
+  box-shadow: var(--b-shadow-right);
+  height: 100vh;
+
+  .b-StackedNav-beacon {
+    display: none;
+  }
+
+  &.-align\:right {
+    box-shadow: var(--b-shadow-left);
+    left: auto;
+  }
+}

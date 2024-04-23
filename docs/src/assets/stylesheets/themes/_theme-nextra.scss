@@ -1,0 +1,260 @@
+/* =======================================
+ * Override nextra-theme-docs
+ * =======================================
+ *
+ * This is a temporary solution. Once we know what features are useful in the
+ * nextra-theme-docs theme, then we can then create our own theme with custom
+ * components.
+ */
+
+@use '../config' as *;
+@use '../mixins' as *;
+@use '@biocode/ds/scss/helpers/heading';
+@use '@biocode/ds/scss/themes/theme-dark';
+@use '@biocode/ds/scss/themes/theme-light';
+
+/* ======
+ * Base
+ * ====== */
+
+body {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+/* ======
+ * Theme
+ * ====== */
+
+:root.light {
+  @extend .b-theme\:light;
+}
+
+:root.dark {
+  @extend .b-theme\:dark;
+  // background: radial-gradient(70% rem($space * 25) at top left, var(--b-bg-300), var(--b-bg-50)) no-repeat;
+  background: var(--b-bg-50);
+}
+
+/* ======
+ * Header
+ * ====== */
+
+.nextra-nav-container {
+  .b-Wordmark {
+    position: relative;
+    top: rem(-1px);
+    width: rem(112px);
+
+    @include mq(xxs) {
+      width: rem(132px);
+    }
+  }
+
+  .b-Mark {
+    width: var(--b-space-l);
+  }
+
+  a[href="https://github.com/joonassandell/biocode-design-system"]
+  {
+    @include mq($until: l) {
+      display: none;
+    }
+  }
+}
+
+:root {
+  @supports (-webkit-backdrop-filter: blur(1px)) or
+    ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .nextra-nav-container-blur {
+      background-color: hsl(var(--b-static-white-hsl) / 0.8) !important;
+    }
+
+    :is(html[class~='dark'] .nextra-nav-container-blur) {
+      background-color: hsl(var(--b-bg-static-900-hsl) / 0.8) !important;
+    }
+  }
+}
+
+.nextra-nav-container-blur {
+  --tw-shadow: 0 -1px 0 var(--b-border-mute-100-translucent) inset !important;
+
+  :is(html[class~='dark']) & {
+    --tw-shadow: 0 -1px 0 var(--b-border-mute-100-translucent) inset !important;
+  }
+}
+
+.nextra-scrollbar {
+  &.nx-border {
+    border-width: 0;
+  }
+}
+
+/* ======
+ * General colors
+ * ====== */
+
+:root {
+  :is(html[class~='dark'] .nextra-content) {
+    color: var(--b-text);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-text-slate-100) {
+    color: var(--b-text-heading);
+  }
+
+  .nx-text-gray-500,
+  .nx-text-gray-600,
+  .nx-text-gray-700 {
+    color: var(--b-text-50);
+  }
+
+  .nx-text-gray-100,
+  :is(html[class~='dark'] .dark\:nx-text-gray-100) {
+    color: var(--b-text);
+  }
+
+  .hover\:nx-text-gray-900:hover {
+    color: var(--b-text);
+  }
+
+  .nx-text-slate-900,
+  .nx-text-gray-900,
+  :is(html[class~='dark'] .dark\:hover\:nx-text-gray-50:hover),
+  :is(html[class~='dark'] .dark\:nx-text-gray-50) {
+    color: var(--b-text-200);
+  }
+
+  .nx-text-primary-600,
+  .nx-text-primary-800,
+  :is(html[class~='dark'] .dark\:nx-text-primary-600) {
+    color: var(--b-primary-highlight);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-bg-dark) {
+    background: var(--b-bg-50);
+  }
+
+  .nx-bg-gray-100,
+  :is(html[class~='dark'] .dark\:nx-bg-neutral-900) {
+    background-color: var(--b-bg-mute-100);
+  }
+
+  :is(html[class~='dark'] .dark\:hover\:nx-bg-primary-100\/5:hover) {
+    background-color: var(--b-bg-200);
+  }
+
+  .hover\:nx-bg-gray-100:hover {
+    background-color: var(--b-bg-mute-300);
+  }
+
+  .nx-bg-gray-200 {
+    background-color: var(--b-bg-mute-400);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-bg-primary-100\/10) {
+    background-color: var(--b-bg-300);
+  }
+
+  .nx-bg-white,
+  :is(html[class~='dark'] .dark\:nx-bg-neutral-800) {
+    background-color: var(--b-surface-0);
+  }
+
+  .nx-bg-black\/\[\.05\],
+  :is(html[class~='dark'] .dark\:nx-bg-gray-50\/10) {
+    background-color: var(--b-bg-mute-300);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-bg-dark\/50) {
+    background-color: var(--b-bg-50);
+  }
+
+  .nx-border-black\/10 {
+    border-color: var(--b-surface-0-border);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-border-gray-100\/20),
+  .nx-border-gray-200 {
+    border-color: var(--b-border-mute-200);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-border-white\/20) {
+    border-color: var(--b-border-mute-100);
+  }
+
+  :is(html[class~='dark'] .dark\:nx-border-neutral-800) {
+    border-color: var(--b-border-mute-50);
+  }
+
+  .nx-ring-1 {
+    box-shadow: var(--b-shadow);
+  }
+
+  .nx-ring-black\/5,
+  :is(html[class~='dark'] .dark\:nx-ring-white\/20) {
+    --tw-ring-color: var(--b-surface-0-border);
+  }
+
+  .nx-shadow-\[0_-12px_16px_\#fff\],
+  :is(html[class~='dark'] .dark\:nx-shadow-\[0_-12px_16px_\#111\]) {
+    --tw-shadow: 0 -12px 16px var(--b-shadow);
+  }
+
+  .nx-shadow-xl {
+    box-shadow: var(--b-shadow-l);
+  }
+}
+
+/* ======
+ * Basics
+ * ====== */
+
+:root {
+  .nx-rounded,
+  .nx-rounded-lg {
+    border-radius: var(--b-border-radius);
+  }
+
+  input {
+    &:focus-visible {
+      box-shadow: unset;
+    }
+  }
+}
+
+/* ======
+ * Typography
+ * ====== */
+
+/**
+ * These needs to be because otherwise the tailwind styles remove the
+ * font-sizes, weights etc. :/
+ */
+:root {
+  h1 {
+    @extend .b-h1;
+  }
+  h2 {
+    @extend .b-h2;
+  }
+  h3 {
+    @extend .b-h3;
+  }
+  h4 {
+    @extend .b-h4;
+  }
+  h5 {
+    @extend .b-h5;
+  }
+
+  .b-Heading-heading {
+    color: var(--b-Heading-color, var(--b-text-heading));
+  }
+
+  h2 {
+    &.nx-mt-10 {
+      margin-top: var(--b-space-xl);
+    }
+  }
+}

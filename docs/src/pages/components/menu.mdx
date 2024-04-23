@@ -1,0 +1,46 @@
+# Menu
+
+## Usage
+
+- Menus are typically used when you have 5-15 items to choose from. They're used for navigation or commands, where an action is initiated based on the selection.
+- When organizing menu items, sort the list in a logical order by putting the most selected option at the top
+- Use for a “more” menu, where the control contains an icon or button
+- Use for user profiles, where the control is an avatar
+- Try to keep MenuItems content to single line. If text are truncated, it's advised to include a way to display the hidden content (hover, click, etc.)
+
+## Guidelines
+
+### Menu items should be always written in sentence case, not title case
+
+The first word should be capitalized and the rest lowercase (unless a proper noun):
+
+- Correct: Create user
+- Incorrect: Create User
+
+### Menu items should always lead with a strong verb that encourages action
+
+Use the `{verb}`+`{noun}` format except in the case of common actions like Save, Close or Cancel.
+
+- Correct: Edit row
+- Incorrect: Editing options
+
+### Avoid unnecessary words and articles in items, such as “the”, “an” or “a”
+
+- Correct: Change theme
+- Incorrect: Change the theme
+
+### Avoid ending item in punctuation
+
+- Correct: Switch user
+- Incorrect: Switch user.
+
+### Avoid all caps for items
+
+- Correct: Switch user
+- Incorrect: SWITCH USER
+
+### Don't
+
+- Don't use for form inputs or selects, use the Select or Input instead
+- Don't use for hiding primary actions since they should be visible by default
+- Don't nest elements or components other than the MenuItem and MenuGroup components

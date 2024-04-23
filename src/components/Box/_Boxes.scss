@@ -1,0 +1,38 @@
+.b-Boxes {
+  display: grid;
+  position: relative;
+
+  &.-border {
+    gap: var(--b-border-width-s);
+
+    .b-Box {
+      border: none;
+      min-height: 100%;
+      outline: var(--b-border-width-s) solid var(--b-Boxes-border-color);
+    }
+
+    &:after {
+      border: var(--b-border-width) solid
+        var(--b-Boxes-border-outer-color, var(--b-Boxes-border-color));
+      border-radius: var(--b-border-radius-l);
+      content: '';
+      inset: calc(var(--b-border-width) * -1);
+      pointer-events: none;
+      position: absolute;
+    }
+  }
+
+  /**
+   * Figure out later how to display the :after 1px border without the boxes
+   * overflowing the outlines without the `overflow: hidden;`.
+   */
+  &.-border\:size\:s {
+    border: var(--b-border-width-s) solid var(--b-Boxes-border-color);
+    border-radius: var(--b-border-radius-l);
+    overflow: hidden;
+
+    &:after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use '../../stylesheets/config' as *;
+@use '../../stylesheets/mixins' as *;
+
+:root {
+  --b-Mark-size-m: var(--b-space-3xl);
+  --b-Mark-size-s: var(--b-space-xl);
+
+  @include mq(l) {
+    --b-Mark-size-m: var(--b-space-5xl);
+  }
+}

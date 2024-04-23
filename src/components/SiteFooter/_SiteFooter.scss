@@ -1,0 +1,182 @@
+@use '../../stylesheets/mixins' as *;
+@use '../Grid/Grid.tokens';
+@use '../SiteHeader/SiteHeader.tokens';
+
+.b-SiteFooter {
+  @include text(m);
+  background: var(--b-surface-0);
+  border-top: var(--b-border-width-s) solid var(--b-surface-0-border);
+  color: var(--b-text-50);
+  font-weight: var(--b-font-weight-medium);
+  padding: var(--b-space-xl) 0 var(--b-space-m) 0;
+  position: relative;
+  width: 100%;
+
+  @include theme('dark') {
+    background: radial-gradient(
+      farthest-side at right bottom,
+      var(--b-surface-0),
+      var(--b-bg-50)
+    );
+  }
+
+  @include mq(SiteHeader-sideWidthActive) {
+    padding: var(--b-space-4xl) 0 var(--b-space-xl) 0;
+  }
+}
+
+.b-SiteFooter-side {
+  margin: 0 var(--b-SiteHeader-side-space-right) 0
+    var(--b-SiteHeader-side-space-left);
+}
+
+.b-SiteFooter-wrap {
+  display: grid;
+  grid-template-columns: var(--b-SiteHeader-side-width) 1fr;
+  margin: 0 auto;
+  max-width: var(--b-SiteHeader-wrap-max-width);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.b-SiteFooter-wordmark {
+  display: block;
+  margin-bottom: var(--b-space-xl);
+  transition: opacity var(--b-trans-duration) var(--b-ease-in-out);
+
+  &:focus-visible,
+  &:hover {
+    opacity: var(--b-opacity-subtle);
+    outline: 0;
+  }
+
+  .b-Wordmark {
+    width: calc(var(--b-space) * 7.5);
+  }
+
+  @include mq(SiteHeader-sideWidthActive) {
+    margin-top: calc(var(--b-space-xs) * -1);
+  }
+}
+
+.b-SiteFooter-main {
+  margin: 0 var(--b-SiteHeader-main-space-right) 0
+    var(--b-SiteHeader-main-space-left);
+}
+
+.b-SiteFooter-nav {
+  margin-bottom: var(--b-space);
+
+  > ul {
+    display: grid;
+    gap: var(--b-space-m);
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(0px, calc(var(--b-SiteHeader-height) * 12))
+    );
+
+    @include mq(SiteHeader-xxs) {
+      grid-template-columns: repeat(Grid.$columns, 1fr);
+    }
+
+    @include mq(SiteHeader-s) {
+      gap: var(--b-space-xl);
+    }
+  }
+
+  @include mq(s) {
+    margin-bottom: calc(var(--b-space) * 6);
+  }
+}
+
+.b-SiteFooter-nav-item {
+  padding-right: var(--b-space-m);
+
+  @include mq(SiteHeader-xxs) {
+    --b-Grid-span: 6;
+    grid-column: span var(--b-Grid-span, #{Grid.$columns}) / span
+      var(--b-Grid-span, #{Grid.$columns});
+  }
+
+  @include mq(SiteHeader-s) {
+    --b-Grid-span: 4;
+    padding-right: 0;
+  }
+
+  @include mq(SiteHeader-l) {
+    --b-Grid-span: 3;
+  }
+}
+
+.b-SiteFooter-nav-link {
+  margin-bottom: var(--b-space-s);
+
+  &.b-Link {
+    font-weight: inherit;
+  }
+
+  @include mq(SiteHeader-xxxl) {
+    &.b-Link {
+      @include text(l);
+    }
+  }
+}
+
+.b-SiteFooter-side--bottom,
+.b-SiteFooter-main--bottom {
+  align-items: center;
+  display: flex;
+  gap: var(--b-space);
+}
+
+.b-SiteFooter-side--bottom {
+  @include mq($until: SiteHeader-sideWidthActive) {
+    order: 1;
+  }
+
+  @include mq(SiteHeader-sideWidthActive) {
+    .b-SiteFooter-icons {
+      display: none;
+    }
+  }
+}
+
+.b-SiteFooter-main--bottom {
+  @include text(s);
+  @include mq($until: SiteHeader-sideWidthActive) {
+    border-top: var(--b-border-width-s) solid
+      var(--b-border-mute-100-translucent);
+    padding-bottom: var(--b-space);
+    padding-top: var(--b-space-l);
+
+    .b-SiteFooter-icons {
+      display: none;
+    }
+  }
+}
+
+.b-SiteFooter-icons {
+  align-items: center;
+  display: flex;
+  gap: var(--b-space-xs);
+  margin-left: auto;
+
+  .b-Button {
+    opacity: var(--b-opacity-subtle);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+/**
+ * If you uncomment any of the font-size lines below, NOTHING in the SiteFooter
+ * dimensions (spacings, fonts, size etc.) should change. Note that this is
+ * just for testing purposes here.
+ */
+// :root {
+//   font-size: calc(16px + 0.17544vw);
+//   font-size: 9px;
+// }

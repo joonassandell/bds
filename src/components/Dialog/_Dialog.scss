@@ -1,0 +1,45 @@
+.b-Dialog {
+  display: grid;
+  overflow: auto;
+  place-items: center;
+
+  &,
+  &.b-Overlay {
+    // z-index: var(--b-z-index-700);
+  }
+}
+
+.b-Dialog-inner {
+  background-color: var(--b-surface-0);
+  border-radius: var(--b-border-radius-l);
+  box-shadow: var(--b-shadow-l);
+  margin: var(--b-space) 0;
+  max-width: calc(var(--b-space) * 46);
+  min-width: var(--b-root-min-width);
+  position: relative;
+  width: 90vw;
+}
+
+.b-Dialog-header {
+  align-items: center;
+  display: flex;
+  padding: var(--b-space-m) calc(var(--b-space-m) + var(--b-space-l)) 0
+    var(--b-space-m);
+}
+
+.b-Dialog-close {
+  position: absolute;
+  right: var(--b-space);
+  top: var(--b-space);
+}
+
+.b-Dialog-content {
+  padding: var(--b-space) var(--b-space-m);
+}
+
+.b-Dialog-footer {
+  border-top: var(--b-border-width-s) solid var(--b-surface-0-border);
+  margin-left: var(--b-space-m);
+  padding: var(--b-space) var(--b-space-m);
+  padding-left: 0;
+}

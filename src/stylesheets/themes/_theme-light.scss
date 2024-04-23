@@ -1,0 +1,226 @@
+@use '../../stylesheets/config' as *;
+@use '../../stylesheets/mixins' as *;
+
+@include theme('light', $root: true) {
+  // Background
+  --b-bg-900: hsl(224 100% 74%);
+  --b-bg-800: hsl(224 100% 80%);
+  --b-bg-700: hsl(224 100% 83%);
+  --b-bg-600: hsl(224 100% 88%);
+  --b-bg-500: hsl(224 100% 91%);
+  --b-bg-400: var(--b-bg-static-400);
+  --b-bg-300: var(--b-bg-static-300);
+  --b-bg-200: var(--b-bg-static-200);
+  --b-bg-100: var(--b-bg-static-100);
+  --b-bg-50: var(--b-bg-static-50);
+
+  --b-bg-transparent: hsl(var(--b-static-white-hsl) / 0);
+
+  // Background mute
+  --b-bg-mute-900: hsl(224 40% 54%);
+  --b-bg-mute-800: hsl(224 40% 64%);
+  --b-bg-mute-700: hsl(224 40% 76%);
+  --b-bg-mute-600: hsl(224 40% 84%);
+  --b-bg-mute-500: hsl(224 40% 89%);
+  --b-bg-mute-400: hsl(224 40% 92%);
+  --b-bg-mute-300: hsl(224 40% 95%);
+  --b-bg-mute-200: hsl(224 40% 97%);
+  --b-bg-mute-100: hsl(224 40% 98%);
+  --b-bg-mute-50: hsl(224 40% 100%);
+
+  // Border
+  --b-border-900: hsl(224 100% 62%);
+  --b-border-800: hsl(224 100% 69%);
+  --b-border-700: hsl(224 100% 75%);
+  --b-border-600: hsl(224 100% 78%);
+  --b-border-500: hsl(224 100% 81%);
+  --b-border-400: hsl(224 100% 83%);
+  --b-border-300: hsl(224 100% 86%);
+  --b-border-200: hsl(224 100% 88%);
+  --b-border-100: hsl(224 100% 92%);
+  --b-border-50: hsl(224 100% 94%);
+
+  --b-border-200-translucent: hsl(224 100% 62% / 0.32);
+  --b-border-100-translucent: hsl(224 100% 62% / 0.22);
+
+  // Border muted
+  --b-border-mute-900: hsl(224 40% 44%);
+  --b-border-mute-800: hsl(224 40% 54%);
+  --b-border-mute-700: hsl(224 40% 69%);
+  --b-border-mute-600: hsl(224 40% 75%);
+  --b-border-mute-500: hsl(224 40% 79%);
+  --b-border-mute-400: hsl(224 40% 83%);
+  --b-border-mute-300: hsl(224 40% 86%);
+  --b-border-mute-200: hsl(224 40% 88%);
+  --b-border-mute-100: hsl(224 40% 90%);
+  --b-border-mute-50: hsl(224 40% 92%);
+
+  --b-border-mute-200-translucent: hsl(224 40% 40% / 0.2);
+  --b-border-mute-100-translucent: hsl(224 40% 40% / 0.16);
+  --b-border-mute-strong: var(--b-bg-static-500);
+
+  // Text
+  --b-text-200: var(--b-text-static-500);
+  --b-text-100: var(--b-text-static-400);
+  --b-text-50: var(--b-text-static-300);
+
+  --b-text: var(--b-text-100);
+  --b-text-heading: var(--b-text-200);
+  --b-text-link: var(--b-primary);
+  --b-text-link-hover: var(--b-primary-600);
+
+  // Black
+  --b-black: var(--b-static-black);
+
+  // Primary
+  --b-primary: var(--b-primary-400);
+  --b-primary-900: hsl(230 94% 20%);
+  --b-primary-800: hsl(230 94% 30%);
+  --b-primary-700: hsl(230 94% 35%);
+  --b-primary-600: hsl(230 94% 40%);
+  --b-primary-500: hsl(230 94% 55%);
+  --b-primary-400: hsl(230 94% 60%);
+  --b-primary-300: var(--b-primary-static-300);
+  --b-primary-200: var(--b-primary-static-200);
+  --b-primary-100: var(--b-primary-static-100);
+  --b-primary-50: var(--b-primary-static-50);
+
+  --b-primary-highlight: var(--b-primary);
+  --b-primary-light: var(--b-primary-50);
+  --b-primary-fg: var(--b-primary-static-50);
+  --b-primary-fg-light: var(--b-primary);
+
+  // Neutral
+  --b-neutral-bg: var(--b-bg-mute-200);
+  --b-neutral-fg: var(--b-text-100);
+  --b-neutral-border: var(--b-border-mute-200);
+  --b-neutral-mute: var(--b-bg-mute-700);
+  --b-neutral-mute-light: var(--b-bg-mute-600);
+
+  // Info
+  --b-info: var(--b-primary);
+  --b-info-bg: var(--b-primary-light);
+  --b-info-fg: var(--b-primary-fg-light);
+  --b-info-border: var(--b-primary-100);
+
+  // Success
+  --b-success: var(--b-accent-3-600);
+  --b-success-bg: var(--b-accent-3-50);
+  --b-success-fg: var(--b-accent-3-700);
+  --b-success-border: hsl(105 50% 73%);
+
+  // Warning
+  --b-warning: var(--b-accent-4-500);
+  --b-warning-bg: var(--b-accent-4-50);
+  --b-warning-fg: var(--b-accent-4-800);
+  --b-warning-border: var(--b-accent-4-200);
+
+  // Error
+  --b-error: var(--b-accent-1);
+  --b-error-bg: var(--b-accent-1-50);
+  --b-error-fg: var(--b-accent-1-600);
+  --b-error-border: var(--b-accent-1-100);
+
+  // Highlight
+  --b-highlight: var(--b-accent-5-500);
+  --b-highlight-bg: var(--b-accent-5-50);
+  --b-highlight-fg: var(--b-accent-5-700);
+  --b-highlight-border: var(--b-accent-5-100);
+
+  // Surface 3
+  --b-surface-3: var(--b-bg-mute-50);
+  --b-surface-3-hover: var(--b-bg-300);
+  --b-surface-3-active: var(--b-bg-400);
+  --b-surface-3-focus: var(--b-bg-mute-50);
+  --b-surface-3-pop: var(--b-bg-mute-100);
+  --b-surface-3-disabled: var(--b-bg-mute-300);
+
+  --b-surface-3-border: var(--b-border-mute-200);
+  --b-surface-3-border-hover: var(--b-border-300);
+  --b-surface-3-border-active: var(--b-border-400);
+  --b-surface-3-border-focus: var(--b-primary);
+  --b-surface-3-border-disabled: var(--b-border-mute-100);
+
+  // Surface 2
+  --b-surface-2: var(--b-bg-mute-200);
+  --b-surface-2-pop: var(--b-bg-mute-50);
+  --b-surface-2-border: var(--b-border-mute-200);
+
+  // Surface 1
+  --b-surface-1: var(--b-bg-mute-50);
+  --b-surface-1-hover: var(--b-bg-300);
+  --b-surface-1-active: var(--b-bg-400);
+  --b-surface-1-focus: var(--b-bg-mute-50);
+  --b-surface-1-pop: var(--b-bg-mute-100);
+  --b-surface-1-inactive: var(--b-bg-mute-400);
+  --b-surface-1-disabled: var(--b-bg-mute-300);
+
+  --b-surface-1-border: var(--b-border-mute-50);
+  --b-surface-1-border-hover: var(--b-border-300);
+  --b-surface-1-border-active: var(--b-border-400);
+  --b-surface-1-border-focus: var(--b-primary);
+  --b-surface-1-border-disabled: var(--b-border-mute-100);
+
+  // Surface 0
+  --b-surface-0: var(--b-bg-mute-50);
+  --b-surface-0-hover: var(--b-bg-300);
+  --b-surface-0-active: var(--b-bg-400);
+  --b-surface-0-focus: var(--b-bg-mute-50);
+  --b-surface-0-pop: var(--b-bg-mute-100);
+  --b-surface-0-inactive: var(--b-bg-mute-400);
+  --b-surface-0-disabled: var(--b-bg-mute-300);
+  --b-surface-0-glare: var(--b-bg-mute-100);
+
+  --b-surface-0-border: var(--b-border-mute-50);
+  --b-surface-0-border-hover: var(--b-border-300);
+  --b-surface-0-border-active: var(--b-border-400);
+  --b-surface-0-border-focus: var(--b-primary);
+  --b-surface-0-border-disabled: var(--b-border-mute-100);
+
+  // Surface general
+  --b-surface-opacity-disabled: 0.8;
+
+  // Opacity
+  --b-opacity-subtle: 0.8;
+  --b-opacity-disabled: 0.6;
+
+  // Overlay
+  --b-overlay: hsl(var(--b-bg-static-900-hsl) / 0.2);
+
+  // Figure overlay (Currently used only in dark theme)
+  --b-figure-overlay: hsl(var(--b-bg-static-900-hsl) / 0.2);
+  --b-figure-overlay-shade: hsl(var(--b-accent-4-700-hsl) / 0.05);
+  --b-figure-overlay-border: hsl(var(--b-static-black-hsl) / 0.1);
+  --b-figure-overlay-border-strong: var(--b-border-mute-strong);
+
+  // Shadow
+  --b-shadow-hsl: 224 40% 75%;
+  --b-shadow-hsl-edge: 224 40% 75%;
+  --b-shadow: inset 0 0 0 1px hsl(var(--b-shadow-hsl) / 0.35),
+    inset 0 -1px 0 0 hsl(var(--b-shadow-hsl) / 0.15),
+    0 3px 4px hsl(var(--b-shadow-hsl) / 0.2);
+  --b-shadow-l: 0 0 0 1px hsl(var(--b-shadow-hsl) / 0.35),
+    0 -1px 0 0 hsl(var(--b-shadow-hsl) / 0.15),
+    0 5px 9px hsl(var(--b-shadow-hsl) / 0.2);
+  --b-shadow-invisible: inset 0 0 0 1px hsl(var(--b-shadow-hsl) / 0),
+    inset 0 -1px 0 0 hsl(var(--b-shadow-hsl) / 0),
+    0 3px 4px hsl(var(--b-shadow-hsl) / 0);
+  --b-shadow-left: -1px 0 0 hsl(var(--b-shadow-hsl) / 0.35),
+    -3px 0 9px hsl(var(--b-shadow-hsl) / 0.15);
+  --b-shadow-right: 1px 0 0 hsl(var(--b-shadow-hsl) / 0.35),
+    3px 0 9px hsl(var(--b-shadow-hsl) / 0.15);
+
+  // Scrollbar
+  --b-scrollbar-thumb: hsl(var(--b-bg-static-900-hsl) / 0.15);
+  --b-scrollbar-thumb-hover: hsl(var(--b-bg-static-900-hsl) / 0.3);
+  --b-scrollbar-track: transparent;
+
+  // Typography
+  --b-font-weight-strong: var(--b-font-weight-500);
+  --b-font-weight-medium: var(--b-font-weight-400);
+
+  // Base
+  accent-color: var(--b-primary);
+  color: var(--b-text);
+  color-scheme: light;
+}

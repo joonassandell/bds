@@ -1,0 +1,199 @@
+@use '../../stylesheets/mixins' as *;
+
+/* ======
+ * Item
+ * ====== */
+
+.b-StackedNav-item {
+  background-color: var(--b-surface-0);
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: var(--b-space-3xs);
+  position: relative;
+
+  .b-StackedNav > ul > & {
+    min-height: var(--b-space-l);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.is-active {
+    > .b-StackedNav-link {
+      &,
+      + .b-StackedNav-button {
+        background-color: var(--b-surface-0-active);
+        border-color: var(--b-surface-0-border-active);
+        color: var(--b-text-200);
+        font-weight: var(--b-font-weight-500);
+      }
+    }
+  }
+
+  &:has(.b-StackedNav-button) {
+    > .b-StackedNav-link:not(:focus-visible) {
+      border-radius: var(--b-border-radius) 0 0 var(--b-border-radius);
+    }
+  }
+
+  &:hover:not(.is-active) {
+    > .b-StackedNav-link,
+    > .b-StackedNav-button {
+      background-color: var(--b-surface-0-hover);
+    }
+
+    > .b-StackedNav-link + .b-StackedNav-button {
+      border-color: var(--b-surface-0-border-hover);
+      color: var(--b-text-200);
+    }
+  }
+}
+
+/* ======
+ * Link & Button
+ * ====== */
+
+.b-StackedNav-link {
+  align-items: center;
+  border-radius: var(--b-border-radius);
+  color: var(--b-text-100);
+  display: flex;
+  flex: 1;
+  gap: var(--b-space-xs);
+  padding: var(--b-space-2xs) var(--b-space-xs);
+  transition:
+    background-color var(--b-trans-duration),
+    color var(--b-trans-duration);
+  transition-timing-function: var(--b-ease-in-out);
+
+  &:only-child,
+  &:focus-visible {
+    border-radius: var(--b-border-radius);
+  }
+
+  @include hoverFocusVisible() {
+    color: var(--b-text-200);
+  }
+
+  @include focusVisible() {
+    background-color: var(--b-surface-0-hover);
+    z-index: 1;
+  }
+}
+
+.b-StackedNav-button {
+  border-left: var(--b-border-width-s) solid transparent;
+  border-radius: 0 var(--b-border-radius) var(--b-border-radius) 0;
+  color: var(--b-text-50);
+  transition:
+    background-color var(--b-trans-duration),
+    border-color var(--b-trans-duration),
+    color var(--b-trans-duration);
+  transition-timing-function: var(--b-ease-in-out);
+
+  @include mqHover {
+    color: transparent;
+  }
+}
+
+.b-StackedNav-button-inner.b-Button.-justify\:block.-size\:s {
+  background-color: transparent;
+  border: 0;
+  box-shadow: unset;
+  color: inherit;
+  height: 100%;
+  transition: none;
+
+  &:before {
+    display: none;
+  }
+
+  @include focusVisible() {
+    background-color: var(--b-surface-0-hover);
+    color: var(--b-text-200);
+  }
+}
+
+/* ======
+ * Icon, Avatar, Label
+ * ====== */
+
+.b-StackedNav-icon,
+.b-StackedNav-avatar {
+  align-self: start;
+}
+
+.b-StackedNav-label.b-Subtitle {
+  margin: var(--b-space-m) 0 var(--b-space-xs) var(--b-space-xs);
+}
+
+/* ======
+ * Indicator
+ * ====== */
+
+.b-StackedNav-indicator {
+  color: var(--b-neutral-mute);
+  position: relative;
+  right: calc(var(--b-space-2xs) * -1);
+  top: var(--b-space-2xs);
+  transition: color var(--b-trans-duration) var(--b-ease-in-out);
+  width: 0;
+
+  .b-Beacon-inner {
+    background-color: var(--b-neutral-mute-light);
+    transition: background-color var(--b-trans-duration) var(--b-ease-in-out);
+  }
+
+  .b-StackedNav.-align\:right & {
+    left: calc((var(--b-space-m) + var(--b-space-2xs)) * -1);
+    order: -1;
+  }
+
+  .b-StackedNav-item.is-active & {
+    color: var(--b-primary);
+
+    .b-Beacon-inner {
+      background-color: var(--b-primary);
+    }
+  }
+}
+
+.b-StackedNav-indicator-inner {
+  background: var(--b-surface-0);
+  border-radius: 100%;
+  display: grid;
+  height: var(--b-space-m);
+  place-items: center;
+  width: var(--b-space-m);
+}
+
+/* ======
+ * Subnav
+ * ====== */
+
+.b-StackedNav-sub {
+  @include text(s);
+  flex-basis: 100%;
+  margin-top: var(--b-space-3xs);
+  order: 1;
+  padding-left: var(--b-space-xs);
+
+  .b-StackedNav-indicator {
+    top: var(--b-space-3xs);
+
+    .b-StackedNav.-align\:right & {
+      left: calc(
+        (var(--b-space-m) + var(--b-space-2xs) + var(--b-space-xs)) * -1
+      );
+    }
+  }
+}
+
+.b-StackedNav-link:has(.b-StackedNav-icon, .b-Avatar) ~ .b-StackedNav-sub {
+  padding-left: var(--b-space-l);
+
+  .b-StackedNav.-align\:right & .b-StackedNav-indicator {
+    left: calc((var(--b-space-m) + var(--b-space-2xs) + var(--b-space-l)) * -1);
+  }
+}

@@ -1,0 +1,7 @@
+/**
+ * Hide the possible empty fresnel containers which could possibly create
+ * unwanted space
+ */
+.fresnel-container:empty {
+  display: none;
+}

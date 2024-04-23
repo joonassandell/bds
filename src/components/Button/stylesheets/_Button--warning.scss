@@ -1,0 +1,25 @@
+@use '../../../stylesheets/mixins' as *;
+
+.b-Button--warning {
+  border: var(--b-border-width) solid var(--b-warning-border);
+  color: var(--b-warning-fg);
+
+  &,
+  .b-Button-loader {
+    background-color: var(--b-warning-bg);
+  }
+
+  @include hoverFocusVisible($focusVisibleProgrammatic: false) {
+    opacity: var(--b-opacity-subtle);
+  }
+}
+
+/* ======
+ * Variants
+ * ====== */
+
+.b-Button--warning {
+  &.is-disabled {
+    opacity: var(--b-opacity-disabled);
+  }
+}

@@ -1,0 +1,46 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Subtitle {
+  @include text($style: subtitle);
+  color: var(--b-text-50);
+  display: block;
+  margin-bottom: var(--b-space-xs);
+
+  a {
+    @include text($style: textLink);
+    color: inherit;
+  }
+
+  &.-size\:l {
+    font-size: var(--b-font-size-s);
+    line-height: var(--b-line-height-s);
+  }
+
+  &.-size\:s {
+    font-size: var(--b-font-size-2xs);
+    line-height: var(--b-line-height-2xs);
+  }
+
+  &.-size\:xs {
+    font-size: var(--b-font-size-3xs);
+    line-height: var(--b-line-height-3xs);
+  }
+
+  &.-color\:strong {
+    color: var(--b-text-200);
+  }
+
+  &.-text\:transform\:none {
+    text-transform: none;
+  }
+
+  &.-suffix\:text\:transform\:none {
+    .b-Subtitle-suffix {
+      text-transform: none;
+    }
+  }
+}
+
+.b-Subtitle-suffix {
+  color: var(--b-text-50);
+}

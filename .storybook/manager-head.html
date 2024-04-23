@@ -1,0 +1,25 @@
+<meta name="robots" content="noindex, nofollow" />
+<meta name="color-scheme" content="dark light" />
+
+<style>
+  /**
+   * Custom styles to override Storybook manager. Most of the styles are applied
+   * from theme.ts, theme-light.ts and theme-dark.ts
+   */
+
+  /* Fix icon colors */
+  .b-theme\:light .sidebar-item[data-selected='false'] svg {
+    color: #4d4dff !important;
+  }
+  .b-theme\:dark .sidebar-item[data-selected='false'] svg {
+    color: #3374ff !important;
+  }
+
+  /* Set proper size for the Biocode logomark */
+  .css-1rb1jn6 {
+    height: 24px !important;
+  }
+  .css-1dy7y2n:focus {
+    border-color: transparent !important;
+  }
+</style>

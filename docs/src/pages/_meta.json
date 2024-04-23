@@ -1,0 +1,24 @@
+{
+  "index": {
+    "title": "Biocode Design System",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": false,
+      "layout": "full",
+      "pagination": false,
+      "sidebar": false
+    }
+  },
+  "documentation": {
+    "title": "Documentation",
+    "href": "/getting-started",
+    "type": "page"
+  },
+  "getting-started": {
+    "theme": {
+      "pagination": false
+    }
+  },
+  "design-tokens": ""
+}

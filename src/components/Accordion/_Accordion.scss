@@ -1,0 +1,38 @@
+.b-Accordion-item {
+  &:not(:last-child) {
+    padding-bottom: var(--b-space-s);
+  }
+}
+
+.b-Accordion-header {
+  width: 100%;
+}
+
+.b-Accordion-header--default {
+  .b-Accordion-heading {
+    font-weight: var(--b-font-weight-500);
+  }
+}
+
+.b-Accordion-trigger {
+  width: 100%;
+}
+
+.b-Accordion-icon {
+  flex-shrink: 0;
+  height: var(--b-Icon-size-xxs);
+  width: var(--b-Icon-size-xxs);
+
+  svg {
+    display: inline-block;
+    fill: currentColor;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.b-Accordion-panel {
+  overflow: hidden;
+  transform-origin: top;
+  will-change: height;
+}

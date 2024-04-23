@@ -1,0 +1,62 @@
+.b-Tabs-list {
+  --b-Tabs-list-border: var(--b-surface-0-border);
+  position: relative;
+
+  &:after {
+    border-bottom: var(--b-border-width-s) solid var(--b-Tabs-list-border);
+    content: '';
+    inset: auto 0 0 0;
+    position: absolute;
+    z-index: 0;
+  }
+
+  .b-ScrollArea-viewport {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.-border\:color\:strong {
+    --b-Tabs-list-border: var(--b-border-mute-strong);
+  }
+
+  &.-border\:none {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.b-Tabs-list-inner {
+  display: flex;
+  position: relative;
+}
+
+/**
+ * Individual Tab CSS variables are added because later we probably add tab
+ * specific color properties. e.g. another tab is negative colored.
+ */
+.b-Tabs-list-tab {
+  --b-Tabs-list-tab-bg: var(--b-Tabs-list-bg, var(--b-surface-0));
+  --b-Tabs-list-tab-border: var(
+    --b-Tabs-list-border,
+    var(--b-surface-0-border)
+  );
+  display: flex;
+  flex-shrink: 0;
+
+  &.is-disabled {
+    .b-Tabs-list-tab-trigger {
+      pointer-events: none;
+    }
+  }
+}
+
+.b-Tabs-list-tab-trigger {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+
+  &:focus-visible {
+    outline: 0;
+  }
+}

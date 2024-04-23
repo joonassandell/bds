@@ -1,0 +1,14 @@
+.b-Collabsible-content {
+  &.-animate {
+    overflow: hidden;
+    will-change: height;
+
+    &[data-state='open'] {
+      animation: b-open var(--b-trans-duration-m) var(--b-ease);
+    }
+
+    &[data-state='closed'] {
+      animation: b-close var(--b-trans-duration-m) var(--b-ease);
+    }
+  }
+}

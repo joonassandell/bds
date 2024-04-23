@@ -1,0 +1,45 @@
+@use '../../stylesheets/mixins' as *;
+
+.b-Link {
+  @include text($style: 'textLink');
+  align-items: center;
+  color: var(--b-Link-color, var(--b-text-200));
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: var(--b-font-size-s);
+  font-weight: var(--b-font-weight-500);
+  gap: var(--b-space-xs);
+  line-height: var(--b-line-height-s);
+  max-width: 100%;
+  text-align: left;
+
+  &.-size\:l {
+    font-size: var(--b-font-size);
+    line-height: var(--b-line-height);
+
+    &.-text\:subtitle {
+      @include text($style: subtitle-l);
+    }
+  }
+
+  &.-size\:s {
+    font-size: var(--b-font-size-xs);
+    line-height: var(--b-line-height-xs);
+
+    &.-text\:subtitle {
+      @include text($style: subtitle-s);
+    }
+  }
+
+  &.-text\:subtitle {
+    @include text($style: subtitle);
+  }
+
+  &.-underline {
+    & {
+      color: var(--b-Link-color, var(--b-text-200));
+      text-decoration-color: var(--b-Link-color, var(--b-text-200));
+    }
+  }
+}
