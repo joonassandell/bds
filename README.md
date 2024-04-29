@@ -12,7 +12,7 @@ Aside from this readme, [our engineering documentation](#) includes additional d
 
 ### Getting started
 
-1. Clone this repository `git clone git@github.com:joonassandell/biocode-design-system.git` and navigate to the directory
+1. Clone this repository `git clone git@github.com:joonassandell/bds.git` and navigate to the directory
 2. Follow the [Git flow](#git-flow)
 3. Install dependencies: `npm install`
 4. Get started with Storybook: `npm run storybook`
