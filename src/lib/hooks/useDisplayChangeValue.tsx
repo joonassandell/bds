@@ -159,8 +159,8 @@ export const useWithChange = ({
             typeof value === 'string'
               ? value
               : value > 0
-              ? `+ ${(value as number).toFixed(decimal)}`
-              : (value as number).toFixed(decimal);
+                ? `+ ${(value as number).toFixed(decimal)}`
+                : (value as number).toFixed(decimal);
           if (deltaRef.current && isNumber(value))
             deltaRef.current.textContent = `${content}`;
         },

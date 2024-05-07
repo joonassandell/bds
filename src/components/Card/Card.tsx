@@ -120,10 +120,10 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
                         isString(avatar)
                           ? avatar
                           : isObject(avatar) && avatar.name
-                          ? avatar.name
-                          : isString(heading)
-                          ? heading
-                          : ''
+                            ? avatar.name
+                            : isString(heading)
+                              ? heading
+                              : ''
                       }
                       size="xLarge"
                     />

@@ -17,10 +17,10 @@ const ColorBox = ({
   const content = text
     ? text
     : backgroundColor
-    ? backgroundColor
-    : borderColor
-    ? borderColor
-    : textColor;
+      ? backgroundColor
+      : borderColor
+        ? borderColor
+        : textColor;
 
   return (
     <Box

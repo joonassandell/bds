@@ -102,8 +102,8 @@ export const Digit = forwardRef<HTMLDivElement, DigitProps>(
       unit === 'kg CO₂e \n/ kg'
         ? 'KG CO₂e / KG'
         : !unitUppercase
-        ? unit
-        : unitUppercase;
+          ? unit
+          : unitUppercase;
 
     const setTruncateOnResize = useCallback(() => {
       if (!numberRef.current || !truncate) return;

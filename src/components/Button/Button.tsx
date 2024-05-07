@@ -248,12 +248,12 @@ const spinnerVariant = (
   variant === 'primary'
     ? 'primaryForeground'
     : variant === 'success'
-    ? 'success'
-    : variant === 'warning'
-    ? 'warning'
-    : variant === 'error'
-    ? 'error'
-    : 'primary';
+      ? 'success'
+      : variant === 'warning'
+        ? 'warning'
+        : variant === 'error'
+          ? 'error'
+          : 'primary';
 
 const spinnerSize = (size: ButtonProps['size']): SpinnerProps['size'] => {
   if (size === 'small') return 'small';

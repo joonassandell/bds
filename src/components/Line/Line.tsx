@@ -63,8 +63,8 @@ export const Line: FC<LineProps> = ({
           const pointColor = isSuccess
             ? 'var(--b-success)'
             : isActive
-            ? 'var(--b-primary-highlight)'
-            : color;
+              ? 'var(--b-primary-highlight)'
+              : color;
 
           return (
             <LineSymbol
